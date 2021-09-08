@@ -25,7 +25,7 @@ const Home: React.FC<Props> = ({ posts }) => {
       <NextSeo title="Home" />
 
       <div className="my-32">
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-futura-pt-bold">Hi, I'm Michael ✍️</h1>
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-futura-pt-bold">Hi, I&apos;m Michael ✍️</h1>
         <p className="text-2xl sm:text-3xl md:text-4xl max-w-3xl font-thin pt-5 font-futura-pt">This is an intro about my blog website this should be a couple of sentences long</p>
 
       </div>
