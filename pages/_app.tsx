@@ -1,8 +1,6 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { DefaultSeo } from 'next-seo';
-import { AnimatePresence } from 'framer-motion';
-
 
 function MyApp({ Component, pageProps }: AppProps) {
   return <>
@@ -21,9 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       titleTemplate = 'Next | %s'
     />
     
-    <AnimatePresence  initial={true} onExitComplete={() => window.scrollTo(0, 0)}>
-      <Component {...pageProps} />
-    </AnimatePresence>
+    <Component {...pageProps} />
   </>
 }
 export default MyApp

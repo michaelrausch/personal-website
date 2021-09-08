@@ -1,10 +1,8 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import React from "react";
-import useDarkMode from "../hooks/useDarkMode";
 
 const Layout: React.FC = ({ children }) => {
-    const [colorTheme, setTheme] = useDarkMode();
 
     const variants = {
         hidden: { opacity: 0, x: -200, y: 0 },
