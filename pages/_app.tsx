@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         site: '@site',
         cardType: 'summary_large_image',
       }}
-      titleTemplate = 'Next | %s'
+      titleTemplate = 'Michael Rausch Blog | %s'
     />
     
     <Component {...pageProps} />
