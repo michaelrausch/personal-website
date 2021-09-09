@@ -88,7 +88,7 @@ const Home: React.FC<Props> = ({ posts, repos }) => {
         <p className="homepage-subheading mb-10">Some recent posts.</p>
 
         {posts.map((post, i) => {
-          return <BlogPostListing post={post} />
+          return <BlogPostListing key={i} post={post} />
         })}
       </div>
 
@@ -108,7 +108,7 @@ const Home: React.FC<Props> = ({ posts, repos }) => {
       </div>
 
       <div className="pt-20">
-        <a href="https://michaelrausch.nz" target="_blank" className="text-green-400 font-black text-4xl underline">Back To Main Website</a>
+        <a href="https://michaelrausch.nz" rel="noreferrer" target="_blank" className="text-green-400 font-black text-4xl underline">Back To Main Website</a>
       </div>
     </Layout>
   )
