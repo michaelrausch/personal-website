@@ -1,7 +1,7 @@
 ---
 title: "Personal Website Demo Blog Post"
-description: "This is a description about my blog post and it'll be about this long hopefully"
-date: 15 May 2021
+description: "This is a sample blog post"
+date: 10 Sep 2021
 tags: react, nodejs
 hero: https://res.cloudinary.com/practicaldev/image/fetch/s--zz947vJi--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/g02cajxgnuo3mu90f13p.png
 ---

@@ -2,6 +2,7 @@ import { BLOG_POSTS, getAllPostIds, getPostData } from '../../lib/PostLoader'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import React from 'react';
 import Layout from '../../layouts/Layout';
+import { NextSeo } from 'next-seo';
 
 interface Params {
     id: string;
@@ -34,13 +35,15 @@ interface Props {
 export const BlogPost: React.FC<Props> = ({ post }) => {
     return (
         <Layout>
-            <div className="w-full mt-20 xl:px-32">
+            <NextSeo title={post.title}/>
+            <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 md:mb-6 text-primary pt-10">{post.title}</h1>
+            <p className="text-white"> <span className="text-green-300">Michael Rausch</span> / {post.date}</p>
+
+            <div className="w-full mt-10">
                 <img src={post.hero} className="w-full" alt="" />
             </div>
-            <h1 className="pt-20 text-5xl text-center font-bold font-futura-pt">{post.title}</h1>
-            <p className="text-center mt-5 font-bold font-futura-pt text-gray-300 text-xl">{post.date}</p>
 
-            <article className="prose prose-sm lg:prose-lg xl:prose-xl prose-dark  max-w-5xl mt-10 mx-auto" dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+            <article className="prose prose-sm lg:prose-lg xl:prose-xl dark:prose-dark max-w-full mt-10" dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
         </Layout>
     )
 }

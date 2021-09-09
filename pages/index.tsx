@@ -1,48 +1,115 @@
 import { NextSeo } from 'next-seo'
 import { GetStaticProps } from 'next'
 import { BLOG_POSTS, getAllPosts } from '../lib/PostLoader'
+
 import Layout from '../layouts/Layout';
 import React from 'react';
-import Link from 'next/link';
+import GithubReposWidget, { GithubRepository } from '../components/homepagewidgets/GithubReposWidget';
+import HomepageHeaderWidget from '../components/homepagewidgets/HomepageHeaderWidget';
+import BlogPostListing from '../components/homepagewidgets/BlogPostListing';
+import SpotifyWidget from '../components/homepagewidgets/SpotifyWidget';
+
+const axios = require('axios').default;
+const API_URL = "https://api.github.com/users/michaelrausch/repos"
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const posts = getAllPosts(BLOG_POSTS);
+  var posts = getAllPosts(BLOG_POSTS);
+
+  var repos: GithubRepository[] = []
+  var response
+
+  try {
+    response = await axios.get(API_URL)
+  } catch (error) {
+    return {
+      props: {
+        posts,
+        repos
+      }
+    }
+  }
+
+  // @ts-ignore
+  response.data.forEach(repo => {
+    if (repo.archived) return
+    if (!repo.description) return
+    if (repo.fork) return
+
+    repos.push({
+      name: repo.name,
+      full_name: repo.full_name,
+      url: repo.html_url,
+      git: repo.git_url,
+      desc: repo.description,
+      updated_at: repo.updated_at,
+      stars: repo.stargazers_count
+    })
+  });
+
+  //@ts-ignore
+  repos.sort(function (a, b) {
+    return +new Date(b.updated_at) - +new Date(a.updated_at);
+  });
+
+  posts.sort(function (a: any, b: any) {
+    return +new Date(b.date) - +new Date(a.date);
+  });
+
+  repos = repos.slice(0, 3)
+  posts = posts.slice(0, 3)
+
 
   return {
     props: {
       posts,
+      repos
     }
   }
 }
 
 interface Props {
   posts: [any]
+  repos: [any]
 }
 
-const Home: React.FC<Props> = ({ posts }) => {
+const Home: React.FC<Props> = ({ posts, repos }) => {
   return (
     <Layout>
       <NextSeo title="Home" />
 
-      <div className="my-32">
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-futura-pt-bold">Hi, I&apos;m Michael ✍️</h1>
-        <p className="text-2xl sm:text-3xl md:text-4xl max-w-3xl font-thin pt-5 font-futura-pt">This is an intro about my blog website this should be a couple of sentences long</p>
-
+      <div className="my-32 text-black dark:text-white">
+        <HomepageHeaderWidget 
+          name="Michael" 
+          bio="I'm a freelance software engineer with a passion for everything web and mobile app development. "/>
       </div>
 
-      {posts.map((post, i) => {
-        return <article key={i} className="mb-14 ">
-          <Link href={"/post/" + post.id} scroll={false}>
-            <div className="max-w-2xl cursor-pointer">
-              <h2 className="text-3xl  font-sourcecode font-bold text-green-500  ">{post.title}</h2>
-              <p className="text-sm my-1 font-sourcecode">{post.date} - {post.tags}</p>
-              <p className="text-base my-2 ">{post.description}</p>
-              <a className="text-base underline hover:text-gray-100 dark:hover:text-gray-100 transition-colors">Read More</a>
-            </div>
-          </Link>
-        </article>
-      })}
+      <div>
+        <h2 className="sm:text-lg sm:leading-snug  font-futura-pt-bold tracking-wide uppercase text-blue-500 mb-3 ">Blog</h2>
+        <p className="homepage-subheading mb-10">Some recent posts.</p>
 
+        {posts.map((post, i) => {
+          return <BlogPostListing post={post} />
+        })}
+      </div>
+
+      <div className="pt-20">
+        <h2 className="sm:text-lg sm:leading-snug  font-futura-pt-bold tracking-wide uppercase text-red-500 mb-3 ">Tunes</h2>
+        <p className="homepage-subheading mb-10">Music While Coding?</p>
+
+        <SpotifyWidget playlistId="2kjnFCSoen7qv2GC6L0h2s" />
+      </div>
+
+      <div className="pt-20">
+        <h2 className="sm:text-lg sm:leading-snug  font-futura-pt-bold tracking-wide uppercase text-yellow-500 mb-3 ">Projects</h2>
+        <p className="homepage-subheading mb-1">Recently Updated </p>
+        <p className="homepage-subheading mb-10">Projects</p>
+
+        <GithubReposWidget repos={repos} />
+      </div>
+
+      <div className="pt-20">
+        <a href="https://michaelrausch.nz" target="_blank" className="text-green-400 font-black text-4xl underline">Back To Main Website</a>
+      </div>
     </Layout>
   )
 }

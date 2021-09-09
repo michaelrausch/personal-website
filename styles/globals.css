@@ -5,4 +5,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom CSS goes here */
+@layer components {
+    .homepage-subheading {
+        @apply text-3xl text-black dark:text-white sm:text-5xl lg:text-6xl leading-none font-extrabold tracking-tight;
+    }
+}

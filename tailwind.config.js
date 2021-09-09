@@ -1,6 +1,6 @@
 module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}', './layouts/**/*.{js,ts,jsx,tsx}'],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {
       fontFamily: {
@@ -9,12 +9,6 @@ module.exports = {
         'futura-pt-bold': ['"futura-pt-bold"', 'sans-serif'],
       },
       colors: {
-        gray: {
-          DEFAULT: '#0D0D0D',
-          '700': '#22262a',
-          '800': '#121416',
-          '900': '#0D0D0D'
-        },
         green: {
           "50": "#113ff107",
           "100": "#f0fff9",
@@ -65,6 +59,7 @@ module.exports = {
   },
   variants: {
     extend: {},
+    typography: ["responsive", "dark"]
   },
   plugins: [
     require('@tailwindcss/typography'),
