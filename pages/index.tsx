@@ -98,7 +98,7 @@ const Home: React.FC<Props> = ({ posts, repos, resources }) => {
 
         <GithubReposWidget repos={repos} />
 
-        <a href="https://github.com/michaelrausch" target="_blank" className="font-bold underline text-gray-100">View Github Profile</a>
+        <a href="https://github.com/michaelrausch" target="_blank" rel="noreferrer" className="font-bold underline text-gray-100">View Github Profile</a>
       </div>
 
       <div className="pt-20">
@@ -113,6 +113,7 @@ const Home: React.FC<Props> = ({ posts, repos, resources }) => {
               whileHover={{ scale: 1.05 }}
               className="h-60 w-48 rounded-md mr-5 mb-5 bg-cover"
               target="_blank"
+              rel="noreferrer"
             >
               <div className="rounded-md text-left">
                 <div style={{ backgroundImage: 'url(' + resource.background + ')'}} className="h-32 rounded-md bg-cover"/>
