@@ -2,7 +2,6 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { DefaultSeo } from 'next-seo';
 import { useState } from 'react';
-import { useScrollPercentage } from 'react-scroll-percentage';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [darkMode, setDarkMode] = useState(true);
@@ -22,12 +21,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       }}
       titleTemplate = 'Michael Rausch Blog | %s'
     />
-    
-    <div className="fixed right-5 bottom-5 h-16 w-16 text-center pt-5 bg-gray-200 dark:bg-gray-800 rounded-full shadow-xl">
-      <button onClick={() => setDarkMode(!darkMode)}>
-        { darkMode ? <DarkModeButton/> : <LightModeButton/>}
-      </button>
-    </div>
 
     <Component {...pageProps} />
   </div>

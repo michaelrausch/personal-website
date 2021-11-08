@@ -7,7 +7,8 @@ import html from "remark-html";
 /**
  * Content Directories
  */
-export const BLOG_POSTS = path.join(process.cwd(), 'content')
+ export const BLOG_POSTS = path.join(process.cwd(), 'content/blogs')
+ export const RESOURCES = path.join(process.cwd(), 'content/resources')
 
 /**
  * Constants

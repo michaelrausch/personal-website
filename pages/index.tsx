@@ -1,6 +1,6 @@
 import { NextSeo } from 'next-seo'
 import { GetStaticProps } from 'next'
-import { BLOG_POSTS, getAllPosts } from '../lib/PostLoader'
+import { BLOG_POSTS, getAllPosts, RESOURCES } from '../lib/PostLoader'
 
 import Layout from '../layouts/Layout';
 import React from 'react';
@@ -8,12 +8,15 @@ import GithubReposWidget, { GithubRepository } from '../components/homepagewidge
 import HomepageHeaderWidget from '../components/homepagewidgets/HomepageHeaderWidget';
 import BlogPostListing from '../components/homepagewidgets/BlogPostListing';
 import SpotifyWidget from '../components/homepagewidgets/SpotifyWidget';
+import { AnimatePresence, motion } from 'framer-motion';
+import HomePageLayout from '../layouts/HomePageLayout';
 
 const axios = require('axios').default;
 const API_URL = "https://api.github.com/users/michaelrausch/repos"
 
 export const getStaticProps: GetStaticProps = async (context) => {
   var posts = getAllPosts(BLOG_POSTS);
+  var resources = getAllPosts(RESOURCES);
 
   var repos: GithubRepository[] = []
   var response
@@ -24,7 +27,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     return {
       props: {
         posts,
-        repos
+        repos,
+        resources
       }
     }
   }
@@ -62,7 +66,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       posts,
-      repos
+      repos,
+      resources
     }
   }
 }
@@ -70,19 +75,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
 interface Props {
   posts: [any]
   repos: [any]
+  resources: [any]
 }
 
-const Home: React.FC<Props> = ({ posts, repos }) => {
+const Home: React.FC<Props> = ({ posts, repos, resources }) => {
   return (
-    <Layout>
+    <HomePageLayout>
       <NextSeo title="Home" />
-
-      <div className="my-32 text-black dark:text-white">
-        <HomepageHeaderWidget 
-          name="Michael" 
-          bio="I'm a freelance software engineer with a passion for everything web and mobile app development. "/>
-      </div>
-
       <div>
         <h2 className="sm:text-lg sm:leading-snug  font-futura-pt-bold tracking-wide uppercase text-blue-500 mb-3 ">Blog</h2>
         <p className="homepage-subheading mb-10">Some recent posts.</p>
@@ -94,9 +93,24 @@ const Home: React.FC<Props> = ({ posts, repos }) => {
 
       <div className="pt-20">
         <h2 className="sm:text-lg sm:leading-snug  font-futura-pt-bold tracking-wide uppercase text-red-500 mb-3 ">Tunes</h2>
-        <p className="homepage-subheading mb-10">Music While Coding?</p>
+        <p className="homepage-subheading mb-10">Resources</p>
 
-        <SpotifyWidget playlistId="2kjnFCSoen7qv2GC6L0h2s" />
+        <div className="flex flex-row flex-wrap">
+          {resources.map((resource, id) => {
+            return <motion.a
+              key={id}
+              href={resource.url}
+              whileHover={{ scale: 1.05 }}
+              className="h-60 w-48 rounded-md shadow-md bg-red-500  flex flex-col justify-end mr-5 mb-5 bg-cover"
+              style={{ backgroundImage: "url('" + resource.background + ")'" }}
+            >
+              <div className=" p-5 bg-gradient-to-b from-transparent to-gray-800 rounded-md">
+                <small className="font-futura-pt-bold text-base">{resource.type}</small>
+                <h4 className="relative font-futura-pt-bold text-xl">{resource.name}</h4>
+              </div>
+            </motion.a>
+          })}
+        </div>
       </div>
 
       <div className="pt-20">
@@ -108,9 +122,13 @@ const Home: React.FC<Props> = ({ posts, repos }) => {
       </div>
 
       <div className="pt-20">
-        <a href="https://michaelrausch.nz" rel="noreferrer" target="_blank" className="text-green-400 font-black text-4xl underline">Back To Main Website</a>
+        <h2 className="sm:text-lg sm:leading-snug  font-futura-pt-bold tracking-wide uppercase text-red-500 mb-3 ">Tunes</h2>
+        <p className="homepage-subheading mb-10">Music While Coding?</p>
+
+        <SpotifyWidget playlistId="2kjnFCSoen7qv2GC6L0h2s" />
       </div>
-    </Layout>
+
+    </HomePageLayout>
   )
 }
 
