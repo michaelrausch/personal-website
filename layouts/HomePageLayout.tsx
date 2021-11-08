@@ -33,7 +33,7 @@ const Layout: React.FC = ({ children }) => {
                 initial="hidden" // Set the initial state to variants.hidden
                 animate="enter" // Animated state to variants.enter
                 transition={{ type: 'linear' }} // Set the transition to linear
-                className="container mx-auto text-white px-10 md:px-42 xl:px-80">
+                className="container mx-auto text-white px-10 md:px-42 xl:px-80 text-center">
                 {children}
             </motion.main>
         </div>

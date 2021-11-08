@@ -12,7 +12,7 @@ const Layout: React.FC = ({ children }) => {
     }
 
     return (
-        <div className="bg-gray-50 dark:bg-gray-900 pb-96">
+        <div className="bg-gray-50 dark:bg-gray-900 pb-96 ">
             <Navbar/>
             
             <motion.main

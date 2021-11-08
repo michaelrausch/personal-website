@@ -92,8 +92,18 @@ const Home: React.FC<Props> = ({ posts, repos, resources }) => {
       </div>
 
       <div className="pt-20">
-        <h2 className="sm:text-lg sm:leading-snug  font-futura-pt-bold tracking-wide uppercase text-red-500 mb-3 ">Tunes</h2>
-        <p className="homepage-subheading mb-10">Resources</p>
+        <h2 className="sm:text-lg sm:leading-snug  font-futura-pt-bold tracking-wide uppercase text-yellow-500 mb-3 ">Projects</h2>
+        <p className="homepage-subheading mb-1">Recently Updated </p>
+        <p className="homepage-subheading mb-10">Projects</p>
+
+        <GithubReposWidget repos={repos} />
+
+        <a href="https://github.com/michaelrausch" target="_blank" className="font-bold underline text-gray-100">View Github Profile</a>
+      </div>
+
+      <div className="pt-20">
+        <h2 className="sm:text-lg sm:leading-snug  font-futura-pt-bold tracking-wide uppercase text-red-500 mb-3 ">Resources</h2>
+        <p className="homepage-subheading mb-10">Useful Resources</p>
 
         <div className="flex flex-row flex-wrap">
           {resources.map((resource, id) => {
@@ -101,11 +111,12 @@ const Home: React.FC<Props> = ({ posts, repos, resources }) => {
               key={id}
               href={resource.url}
               whileHover={{ scale: 1.05 }}
-              className="h-60 w-48 rounded-md shadow-md bg-red-500  flex flex-col justify-end mr-5 mb-5 bg-cover"
-              style={{ backgroundImage: "url('" + resource.background + ")'" }}
+              className="h-60 w-48 rounded-md mr-5 mb-5 bg-cover"
+              target="_blank"
             >
-              <div className=" p-5 bg-gradient-to-b from-transparent to-gray-800 rounded-md">
-                <small className="font-futura-pt-bold text-base">{resource.type}</small>
+              <div className="rounded-md text-left">
+                <div style={{ backgroundImage: 'url(' + resource.background + ')'}} className="h-32 rounded-md bg-cover"/>
+                <small className="t text-base font-futura-pt">{resource.type}</small>
                 <h4 className="relative font-futura-pt-bold text-xl">{resource.name}</h4>
               </div>
             </motion.a>
@@ -114,18 +125,10 @@ const Home: React.FC<Props> = ({ posts, repos, resources }) => {
       </div>
 
       <div className="pt-20">
-        <h2 className="sm:text-lg sm:leading-snug  font-futura-pt-bold tracking-wide uppercase text-yellow-500 mb-3 ">Projects</h2>
-        <p className="homepage-subheading mb-1">Recently Updated </p>
-        <p className="homepage-subheading mb-10">Projects</p>
-
-        <GithubReposWidget repos={repos} />
-      </div>
-
-      <div className="pt-20">
         <h2 className="sm:text-lg sm:leading-snug  font-futura-pt-bold tracking-wide uppercase text-red-500 mb-3 ">Tunes</h2>
         <p className="homepage-subheading mb-10">Music While Coding?</p>
 
-        <SpotifyWidget playlistId="2kjnFCSoen7qv2GC6L0h2s" />
+        <SpotifyWidget playlistId="6PIsKjJ5VzOuUbgwFptMO7" />
       </div>
 
     </HomePageLayout>
