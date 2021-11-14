@@ -127,7 +127,7 @@ const Home: React.FC<Props> = ({ posts, repos, resources }) => {
 
       <div className="pt-20">
         <h2 className="sm:text-lg sm:leading-snug  font-futura-pt-bold tracking-wide uppercase text-red-500 mb-3 ">Tunes</h2>
-        <p className="homepage-subheading mb-10">Music While Coding?</p>
+        <p className="homepage-subheading mb-10">Coding Playlist</p>
 
         <SpotifyWidget playlistId="6PIsKjJ5VzOuUbgwFptMO7" />
       </div>
