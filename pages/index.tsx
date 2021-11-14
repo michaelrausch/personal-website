@@ -8,7 +8,7 @@ import { BLOG_POSTS, getAllPosts, RESOURCES } from '../lib/PostLoader'
 import BlogPostListing from '../components/blog/BlogPostListing';
 import SpotifyWidget from '../components/home/SpotifyWidget';
 import HomePageLayout from '../layouts/HomePageLayout';
-import GithubReposWidget from '../components/home/GithubRepoCard';
+import GithubRepoCard from '../components/home/GithubRepoCard';
 import ResourceCard from '../components/home/ResourceCard';
 
 /**
@@ -90,7 +90,7 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
         <p className="homepage-heading mb-10">Projects</p>
 
         {repos.map((repo, key) => {
-          return <GithubReposWidget repo={repo} key={key} />
+          return <GithubRepoCard repo={repo} key={key} />
         })}
 
         <a href="https://github.com/michaelrausch" target="_blank" rel="noreferrer" className="font-bold underline text-gray-100">View Github Profile</a>
@@ -117,7 +117,7 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
       <div className="pt-20">
         <div className="bg-gray-900 w-full rounded-xl py-10">
           <p className="homepage-subheading text-green-500 mb-0">Email Me</p>
-          <a className="leading-none font-extrabold tracking-tight text-5xl" href="mailto:michael@rausch.nz">michael@rausch.nz</a>
+          <a className="leading-none font-extrabold tracking-tight text-2xl sm:text-4xl lg:text-5xl" href="mailto:michael@rausch.nz">michael@rausch.nz</a>
         </div>
       </div>
 
