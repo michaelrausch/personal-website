@@ -105,7 +105,7 @@ const Home: React.FC<Props> = ({ posts, repos, resources }) => {
         <h2 className="sm:text-lg sm:leading-snug  font-futura-pt-bold tracking-wide uppercase text-red-500 mb-3 ">Resources</h2>
         <p className="homepage-subheading mb-10">Useful Resources</p>
 
-        <div className="flex flex-row flex-wrap">
+        <div className="flex flex-row flex-wrap justify-center sm:justify-start">
           {resources.map((resource, id) => {
             return <motion.a
               key={id}
