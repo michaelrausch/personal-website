@@ -44,7 +44,7 @@ export default function BarberAndCo() {
                     </ul>
 
                     <p className="pb-4">
-                        Providing some information is optional. If you choose not to enter your contact information, we'll not be able to provide you with access to the Barber and Co app.</p>
+                        Providing some information is optional. If you choose not to enter your contact information, we&apos;ll not be able to provide you with access to the Barber and Co app.</p>
                     <p className="pb-4">
                         We keep your information safe by only collecting the minimum amount of personal information required to provide this service and by storing it in an encrypted environment.</p>
                     <p className="pb-4">
@@ -52,8 +52,6 @@ export default function BarberAndCo() {
                     <p className="pb-4">
                         You have the right to ask for a copy of any personal information we hold about you, and to ask for it to be corrected if you think it is wrong. If you’d like to ask for a copy of your information, or to have it corrected, please contact us at support@michaelrausch.nz.</p>
                 </p>
-
-
 
                 <h2 className="text-white text-2xl font-extrabold pb-5 pt-10">Terms And Conditions</h2>
                 <p className="text-gray-100 text-sm font-semibold">
