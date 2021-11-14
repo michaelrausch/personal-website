@@ -6,7 +6,12 @@
 @tailwind utilities;
 
 @layer components {
-    .homepage-subheading {
+    .homepage-heading {
         @apply text-3xl text-black dark:text-white sm:text-5xl lg:text-6xl leading-none font-extrabold tracking-tight;
     }
+
+    .homepage-subheading {
+    @apply sm:text-lg sm:leading-snug font-futura-pt-bold tracking-wide uppercase mb-3;
 }
+}
+

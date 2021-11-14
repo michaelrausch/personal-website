@@ -1,139 +1,143 @@
 import { NextSeo } from 'next-seo'
 import { GetStaticProps } from 'next'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
 import { BLOG_POSTS, getAllPosts, RESOURCES } from '../lib/PostLoader'
 
-import Layout from '../layouts/Layout';
-import React from 'react';
-import GithubReposWidget, { GithubRepository } from '../components/homepagewidgets/GithubReposWidget';
-import HomepageHeaderWidget from '../components/homepagewidgets/HomepageHeaderWidget';
-import BlogPostListing from '../components/homepagewidgets/BlogPostListing';
-import SpotifyWidget from '../components/homepagewidgets/SpotifyWidget';
-import { AnimatePresence, motion } from 'framer-motion';
+import BlogPostListing from '../components/blog/BlogPostListing';
+import SpotifyWidget from '../components/home/SpotifyWidget';
 import HomePageLayout from '../layouts/HomePageLayout';
+import GithubReposWidget from '../components/home/GithubRepoCard';
+import ResourceCard from '../components/home/ResourceCard';
 
-const axios = require('axios').default;
-const API_URL = "https://api.github.com/users/michaelrausch/repos"
+/**
+ * Constants
+ */
+const GH_API_URL = "https://api.github.com/users/michaelrausch/repos"
 
+/**
+ * Load static props at buildtime
+ * See: https://nextjs.org/docs/basic-features/data-fetching
+ */
 export const getStaticProps: GetStaticProps = async (context) => {
   var posts = getAllPosts(BLOG_POSTS);
   var resources = getAllPosts(RESOURCES);
 
-  var repos: GithubRepository[] = []
-  var response
-
-  try {
-    response = await axios.get(API_URL)
-  } catch (error) {
-    return {
-      props: {
-        posts,
-        repos,
-        resources
-      }
-    }
-  }
-
-  // @ts-ignore
-  response.data.forEach(repo => {
-    if (repo.archived) return
-    if (!repo.description) return
-    if (repo.fork) return
-
-    repos.push({
-      name: repo.name,
-      full_name: repo.full_name,
-      url: repo.html_url,
-      git: repo.git_url,
-      desc: repo.description,
-      updated_at: repo.updated_at,
-      stars: repo.stargazers_count
-    })
-  });
-
-  //@ts-ignore
-  repos.sort(function (a, b) {
-    return +new Date(b.updated_at) - +new Date(a.updated_at);
-  });
-
-  posts.sort(function (a: any, b: any) {
-    return +new Date(b.date) - +new Date(a.date);
-  });
-
-  repos = repos.slice(0, 3)
   posts = posts.slice(0, 3)
-
+  resources = resources.slice(0, 3)
 
   return {
     props: {
       posts,
-      repos,
       resources
     }
   }
 }
 
-interface Props {
-  posts: [any]
-  repos: [any]
-  resources: [any]
-}
+const Home: React.FC<Props> = ({ posts, resources }) => {
+  const [repos, setRepos] = useState<GithubRepository[]>([]);
 
-const Home: React.FC<Props> = ({ posts, repos, resources }) => {
+  useEffect(() => {
+    var repos: GithubRepository[] = []
+
+    axios.get(GH_API_URL)
+      .then(response => {
+        response.data.forEach((repo: any) => {
+          // Don't use repos that are archived, dont havve a description or are forked
+          if (repo.archived) return
+          if (!repo.description) return
+          if (repo.fork) return
+
+          repos.push({
+            name: repo.name,
+            full_name: repo.full_name,
+            url: repo.html_url,
+            git: repo.git_url,
+            desc: repo.description,
+            updated_at: repo.updated_at,
+            stars: repo.stargazers_count
+          })
+
+          // Sort newest first
+          repos.sort(function (a, b) {
+            return +new Date(b.updated_at) - +new Date(a.updated_at);
+          });
+
+          repos = repos.slice(0, 3)
+          setRepos(repos);
+        });        
+      })
+  }, [])
+
   return (
     <HomePageLayout>
       <NextSeo title="Home" />
-      <div>
-        <h2 className="sm:text-lg sm:leading-snug  font-futura-pt-bold tracking-wide uppercase text-blue-500 mb-3 ">Blog</h2>
-        <p className="homepage-subheading mb-10">Some recent posts.</p>
 
-        {posts.map((post, i) => {
-          return <BlogPostListing key={i} post={post} />
-        })}
+      <div>
+        <h2 className="homepage-subheading text-blue-500">Blog</h2>
+        <p className="homepage-heading mb-10">Some recent posts.</p>
+
+        {/* {posts.map((post, key) => {
+          return <BlogPostListing key={key} post={post} />
+        })} */}
+        <p className="text-white opacity-75 font-sourcecode text-xl">// Coming Soon</p>
       </div>
 
       <div className="pt-20">
-        <h2 className="sm:text-lg sm:leading-snug  font-futura-pt-bold tracking-wide uppercase text-yellow-500 mb-3 ">Projects</h2>
-        <p className="homepage-subheading mb-1">Recently Updated </p>
-        <p className="homepage-subheading mb-10">Projects</p>
+        <h2 className="homepage-subheading text-yellow-500">Projects</h2>
+        <p className="homepage-heading mb-1">Recently Updated </p>
+        <p className="homepage-heading mb-10">Projects</p>
 
-        <GithubReposWidget repos={repos} />
+        {repos.map((repo, key) => {
+          return <GithubReposWidget repo={repo} key={key} />
+        })}
 
         <a href="https://github.com/michaelrausch" target="_blank" rel="noreferrer" className="font-bold underline text-gray-100">View Github Profile</a>
       </div>
 
       <div className="pt-20">
-        <h2 className="sm:text-lg sm:leading-snug  font-futura-pt-bold tracking-wide uppercase text-red-500 mb-3 ">Resources</h2>
-        <p className="homepage-subheading mb-10">Useful Resources</p>
+        <h2 className="homepage-subheading text-red-500">Resources</h2>
+        <p className="homepage-heading mb-10">Useful Resources</p>
 
-        <div className="flex flex-row flex-wrap justify-center sm:justify-start">
+        <div className="flex flex-row flex-wrap justify-center sm:justify-start ">
           {resources.map((resource, id) => {
-            return <motion.a
-              key={id}
-              href={resource.url}
-              whileHover={{ scale: 1.05 }}
-              className="h-60 w-48 rounded-md mr-5 mb-5 bg-cover"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div className="rounded-md text-left">
-                <div style={{ backgroundImage: 'url(' + resource.background + ')'}} className="h-32 rounded-md bg-cover"/>
-                <small className="t text-base font-futura-pt">{resource.type}</small>
-                <h4 className="relative font-futura-pt-bold text-xl">{resource.name}</h4>
-              </div>
-            </motion.a>
+            return <ResourceCard resource={resource} key={id} />
           })}
         </div>
       </div>
 
       <div className="pt-20">
-        <h2 className="sm:text-lg sm:leading-snug  font-futura-pt-bold tracking-wide uppercase text-red-500 mb-3 ">Tunes</h2>
-        <p className="homepage-subheading mb-10">Coding Playlist</p>
+        <h2 className="homepage-subheading text-red-500">Tunes</h2>
+        <p className="homepage-heading mb-10">Coding Playlist</p>
 
         <SpotifyWidget playlistId="6PIsKjJ5VzOuUbgwFptMO7" />
       </div>
 
+      <div className="pt-20">
+        <div className="bg-gray-900 w-full rounded-xl py-10">
+          <p className="homepage-subheading text-green-500 mb-0">Email Me</p>
+          <a className="leading-none font-extrabold tracking-tight text-5xl" href="mailto:michael@rausch.nz">michael@rausch.nz</a>
+        </div>
+      </div>
+
     </HomePageLayout>
   )
+}
+
+interface Props {
+  posts: [any]
+  resources: [any]
+}
+
+export interface GithubRepository {
+  name: string,
+  full_name: string,
+  url: string,
+  git: string,
+  desc: string,
+  updated_at: Date,
+  stars: number
 }
 
 export default Home;

@@ -4,7 +4,7 @@ interface Props {
     bio: string;
 }
 
-const HomepageHeaderWidget: React.FC<Props> = ({name, bio}) => {
+const HomepageHeader: React.FC<Props> = ({name, bio}) => {
     return (
         <div className="text-center">
             <span className="font-extrabold text-3xl mb-3 text-green-500 text-center">Hey There,</span>
@@ -14,4 +14,4 @@ const HomepageHeaderWidget: React.FC<Props> = ({name, bio}) => {
     )
 }
 
-export default HomepageHeaderWidget;
+export default HomepageHeader;
