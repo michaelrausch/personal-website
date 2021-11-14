@@ -5,7 +5,6 @@ import axios from 'axios';
 
 import { BLOG_POSTS, getAllPosts, RESOURCES } from '../lib/PostLoader'
 
-import BlogPostListing from '../components/blog/BlogPostListing';
 import SpotifyWidget from '../components/home/SpotifyWidget';
 import HomePageLayout from '../layouts/HomePageLayout';
 import GithubRepoCard from '../components/home/GithubRepoCard';
@@ -81,7 +80,7 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
         {/* {posts.map((post, key) => {
           return <BlogPostListing key={key} post={post} />
         })} */}
-        <p className="text-white opacity-75 font-sourcecode text-xl">// Coming Soon</p>
+        <p className="text-white opacity-75 font-sourcecode text-xl">Coming Soon</p>
       </div>
 
       <div className="pt-20">
