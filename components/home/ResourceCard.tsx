@@ -6,12 +6,12 @@ const ResourceCard: React.FC<Props> = ({ resource }) => {
         <motion.a
             href={resource.url}
             whileHover={{ scale: 1.05 }}
-            className="w-48 rounded-md m-5 sm:m-0 sm:mr-5 mb-5 bg-cover"
+            className="w-48 rounded-md m-5 sm:m-0 sm:mr-5 mb-5 bg-cover "
             target="_blank"
             rel="noreferrer">
             <div className="rounded-md text-center sm:text-left">
-                <div style={{ backgroundImage: 'url(' + resource.background + ')' }} className="h-32 rounded-md bg-cover" />
-                <small className="t text-base font-futura-pt">{resource.type}</small>
+                <div style={{ backgroundImage: 'url(' + resource.background + ')' }} className="h-32 rounded-md bg-cover shadow-offset-black mb-2" />
+                <small className="text-base font-futura-pt">{resource.type}</small>
                 <h4 className="relative font-futura-pt-bold text-xl">{resource.name}</h4>
             </div>
         </motion.a>

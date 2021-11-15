@@ -73,7 +73,7 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
 
   return (
     <HomePageLayout>
-      <NextSeo title="Home" />
+      <NextSeo title="Web & App Developer" />
 
       <div className="pt-16 md:pt-0">
         <h2 className="homepage-subheading text-blue-500">Blog</h2>
