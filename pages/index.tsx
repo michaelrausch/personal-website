@@ -10,6 +10,7 @@ import HomePageLayout from '../layouts/HomePageLayout';
 import GithubRepoCard from '../components/home/GithubRepoCard';
 import ResourceCard from '../components/home/ResourceCard';
 import ContactForm from '../components/home/ContactForm';
+import BlogPostListing from '../components/blog/BlogPostListing';
 
 /**
  * Constants
@@ -25,7 +26,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   var resources = getAllPosts(RESOURCES);
 
   posts = posts.slice(0, 3)
-  resources = resources.slice(0, 3)
+  resources = resources.slice(0, 5)
 
   return {
     props: {
@@ -78,10 +79,10 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
         <h2 className="homepage-subheading text-blue-500">Blog</h2>
         <p className="homepage-heading mb-10">Some recent posts.</p>
 
-        {/* {posts.map((post, key) => {
+        {posts.map((post, key) => {
           return <BlogPostListing key={key} post={post} />
-        })} */}
-        <p className="text-white opacity-75 font-sourcecode text-xl">Coming Soon</p>
+        })}
+        {/* <p className="text-white opacity-75 font-sourcecode text-xl">Coming Soon</p> */}
       </div>
 
       <div className="pt-28">
