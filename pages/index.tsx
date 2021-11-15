@@ -9,6 +9,8 @@ import SpotifyWidget from '../components/home/SpotifyWidget';
 import HomePageLayout from '../layouts/HomePageLayout';
 import GithubRepoCard from '../components/home/GithubRepoCard';
 import ResourceCard from '../components/home/ResourceCard';
+import ContactForm from '../components/home/ContactForm';
+import { AppFeature } from '../components/home/AppFeature';
 
 /**
  * Constants
@@ -65,7 +67,7 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
 
           repos = repos.slice(0, 3)
           setRepos(repos);
-        });        
+        });
       })
   }, [])
 
@@ -83,7 +85,7 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
         <p className="text-white opacity-75 font-sourcecode text-xl">Coming Soon</p>
       </div>
 
-      <div className="pt-20">
+      <div className="pt-28">
         <h2 className="homepage-subheading text-yellow-500">Projects</h2>
         <p className="homepage-heading mb-1">Recently Updated </p>
         <p className="homepage-heading mb-10">Projects</p>
@@ -95,8 +97,8 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
         <a href="https://github.com/michaelrausch" target="_blank" rel="noreferrer" className="font-bold underline text-gray-100">View Github Profile</a>
       </div>
 
-      <div className="pt-20">
-        <h2 className="homepage-subheading text-red-500">Resources</h2>
+      <div className="pt-28">
+        <h2 className="homepage-subheading text-green-500">Resources</h2>
         <p className="homepage-heading mb-10">Useful Resources</p>
 
         <div className="flex flex-row flex-wrap justify-center sm:justify-start ">
@@ -106,11 +108,17 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
         </div>
       </div>
 
-      <div className="pt-20">
+      <div className="pt-28">
         <h2 className="homepage-subheading text-red-500">Tunes</h2>
         <p className="homepage-heading mb-10">Coding Playlist</p>
 
         <SpotifyWidget playlistId="6PIsKjJ5VzOuUbgwFptMO7" />
+      </div>
+
+      <div className="pt-28">
+        <p className="homepage-heading mb-10">Contact Me</p>
+
+        <ContactForm></ContactForm>
       </div>
 
       <div className="pt-20">
@@ -119,6 +127,7 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
           <a className="leading-none font-extrabold tracking-tight text-2xl sm:text-4xl lg:text-5xl" href="mailto:michael@rausch.nz">michael@rausch.nz</a>
         </div>
       </div>
+
 
     </HomePageLayout>
   )

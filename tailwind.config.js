@@ -27,6 +27,12 @@ module.exports = {
         '3xl': '2100px',
         '4xl': '2400px'
       },
+      boxShadow: {
+        'offset-black': '5px 5px black',
+        'offset-black-lg': '8px 8px black',
+        'offset-green': '3px 3px #00DB87',
+        'offset-green-lg': '5px 5px #00DB87'
+      },
       typography(theme) {
         return {
           dark: {

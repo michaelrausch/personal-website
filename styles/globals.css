@@ -11,7 +11,7 @@
     }
 
     .homepage-subheading {
-    @apply sm:text-lg sm:leading-snug font-futura-pt-bold tracking-wide uppercase mb-3;
-}
+        @apply sm:text-lg sm:leading-snug font-futura-pt-bold tracking-wide uppercase mb-3;
+    }
 }
 
