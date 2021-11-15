@@ -10,7 +10,6 @@ import HomePageLayout from '../layouts/HomePageLayout';
 import GithubRepoCard from '../components/home/GithubRepoCard';
 import ResourceCard from '../components/home/ResourceCard';
 import ContactForm from '../components/home/ContactForm';
-import { AppFeature } from '../components/home/AppFeature';
 
 /**
  * Constants
