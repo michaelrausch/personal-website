@@ -12,6 +12,7 @@ export default class MyDocument extends Document {
                         dangerouslySetInnerHTML={{ __html: JSON.stringify(GetLDJson()) }}
                     />
                     <link rel="icon" href="/favicon.ico" />
+                    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "88296b911cff4b509db09634a3661a87"}'></script>
                 </Head>
 
                 <body>
