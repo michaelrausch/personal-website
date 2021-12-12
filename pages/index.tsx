@@ -15,12 +15,9 @@ import BlogPostListing from '../components/blog/BlogPostListing';
 /**
  * Constants
  */
-const GH_API_URL = "https://api.github.com/users/michaelrausch/repos"
+const GH_API_URL = process.env.NEXT_PUBLIC_GITHUB_API_URL || ""
+const GH_PROFILE_URL = process.env.NEXT_PUBLIC_PROFILE_URL || ""
 
-/**
- * Load static props at buildtime
- * See: https://nextjs.org/docs/basic-features/data-fetching
- */
 export const getStaticProps: GetStaticProps = async (context) => {
   var posts = getAllPosts(BLOG_POSTS);
   var resources = getAllPosts(RESOURCES);
@@ -76,13 +73,12 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
       <NextSeo title="Web & App Developer" />
 
       <div className="pt-16 md:pt-0">
-        <h2 className="homepage-subheading text-blue-500">Blog</h2>
-        <p className="homepage-heading mb-10">Some recent posts.</p>
+        <h2 className="homepage-subheading text-blue-500">Coming Soon</h2>
+        <p className="homepage-heading mb-10">Blog Coming Soon.</p>
 
-        {posts.map((post, key) => {
+        {process.env.NEXT_PUBLIC_ENABLE_BLOG === 'true' && posts.map((post, key) => {
           return <BlogPostListing key={key} post={post} />
         })}
-        {/* <p className="text-white opacity-75 font-sourcecode text-xl">Coming Soon</p> */}
       </div>
 
       <div className="pt-28">
@@ -94,7 +90,7 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
           return <GithubRepoCard repo={repo} key={key} />
         })}
 
-        <a href="https://github.com/michaelrausch" target="_blank" rel="noreferrer" className="font-bold underline text-gray-100">View Github Profile</a>
+        <a href={GH_PROFILE_URL} target="_blank" rel="noreferrer" className="font-bold underline text-gray-100">View Github Profile</a>
       </div>
 
       <div className="pt-28">
@@ -108,13 +104,15 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
         </div>
       </div>
 
-      <div className="pt-28">
-        <h2 className="homepage-subheading text-red-500">Tunes</h2>
-        <p className="homepage-heading mb-10">Coding Playlist</p>
+      { process.env.NEXT_PUBLIC_ENABLE_SPOTIFY === 'true' &&
+        <div className="pt-28">
+          <h2 className="homepage-subheading text-red-500">Tunes</h2>
+          <p className="homepage-heading mb-10">Coding Playlist</p>
 
-        <SpotifyWidget playlistId="6PIsKjJ5VzOuUbgwFptMO7" />
-      </div>
-
+          <SpotifyWidget playlistId="6PIsKjJ5VzOuUbgwFptMO7" />
+        </div>
+      }
+      
       <div className="pt-28">
         <p className="homepage-heading mb-10">Contact Me</p>
 
@@ -127,8 +125,6 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
           <a className="leading-none font-extrabold tracking-tight text-2xl sm:text-4xl lg:text-5xl" href="mailto:michael@rausch.nz">michael@rausch.nz</a>
         </div>
       </div>
-
-
     </HomePageLayout>
   )
 }

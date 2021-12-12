@@ -100,7 +100,7 @@ const ContactForm: React.FC = () => {
             </div>
 
             <button
-                className="py-3 px-8 bg-green-500 font-futura-pt-bold text-xl rounded-md text-white w-full md:w-auto disabled:opacity-50 shadow-offset-black"
+                className="py-3 px-8 bg-blue-500 font-futura-pt-bold text-xl rounded-md text-white w-full md:w-auto disabled:opacity-50 shadow-offset-black"
                 disabled={formProcessing}
                 id="contact-submit">
                 {formProcessing ? 'Sending' : 'Send'}
