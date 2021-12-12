@@ -6,7 +6,7 @@ const ResourceCard: React.FC<Props> = ({ resource }) => {
         <motion.a
             href={resource.url}
             whileHover={{ scale: 1.05 }}
-            className="w-48 rounded-md m-5 sm:m-0 sm:mr-5 mb-5 bg-cover "
+            className="w-48 rounded-md mx-5 sm:mx-0 sm:mr-5 mb-5 bg-cover "
             target="_blank"
             rel="noreferrer">
             <div className="rounded-md text-center sm:text-left">
