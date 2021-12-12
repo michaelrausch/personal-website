@@ -16,7 +16,8 @@ import BlogPostListing from '../components/blog/BlogPostListing';
  * Constants
  */
 const GH_API_URL = process.env.NEXT_PUBLIC_GITHUB_API_URL || ""
-const GH_PROFILE_URL = process.env.NEXT_PUBLIC_PROFILE_URL || ""
+const GH_PROFILE_URL = process.env.NEXT_PUBLIC_GITHUB_PROFILE_URL || ""
+const SPOTIFY_PLAYLIST_ID = process.env.NEXT_PUBLIC_SPOTIFY_PLAYLIST_ID || ""
 
 export const getStaticProps: GetStaticProps = async (context) => {
   var posts = getAllPosts(BLOG_POSTS);
@@ -109,7 +110,7 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
           <h2 className="homepage-subheading text-red-500">Tunes</h2>
           <p className="homepage-heading mb-10">Coding Playlist</p>
 
-          <SpotifyWidget playlistId="6PIsKjJ5VzOuUbgwFptMO7" />
+          <SpotifyWidget playlistId={SPOTIFY_PLAYLIST_ID} />
         </div>
       }
       
