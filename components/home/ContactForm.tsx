@@ -3,8 +3,8 @@ import React, { FormEvent } from "react"
 import { useState } from "react";
 
 const ContactForm: React.FC = () => {
-    let API_URL = "https://contact-v2.byronbay.rausch.id.au/";
-    let DEST = "michael"
+    let API_URL = process.env.NEXT_PUBLIC_CONTACT_API_URL || '';
+    let DEST = process.env.NEXT_PUBLIC_CONTACT_FORM_DESTINATION;
 
     let [name, setName] = useState('')
     let [email, setEmail] = useState('')
@@ -44,15 +44,15 @@ const ContactForm: React.FC = () => {
             "Message": message,
             "Destination": DEST
         })
-            .then(result => {
-                if (result.status !== 200) {
-                    return hadError(errorMessage);
-                }
-                hadSuccess();
-            })
-            .catch(err => {
+        .then(result => {
+            if (result.status !== 200) {
                 return hadError(errorMessage);
-            })
+            }
+            hadSuccess();
+        })
+        .catch(err => {
+            return hadError(errorMessage);
+        })
     }
 
     return (
@@ -73,6 +73,7 @@ const ContactForm: React.FC = () => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Joe Bloggs"
+                    id="contact-name"
                 ></input>
             </div>
 
@@ -83,6 +84,7 @@ const ContactForm: React.FC = () => {
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     placeholder="hello@example.com"
+                    id="contact-email"
                 ></input>
             </div>
 
@@ -93,12 +95,14 @@ const ContactForm: React.FC = () => {
                     value={message}
                     onChange={e => setMessage(e.target.value)}
                     placeholder="Hi!"
+                    id="contact-message"
                 ></textarea>
             </div>
 
             <button
                 className="py-3 px-8 bg-green-500 font-futura-pt-bold text-xl rounded-md text-white w-full md:w-auto disabled:opacity-50 shadow-offset-black"
-                disabled={formProcessing}>
+                disabled={formProcessing}
+                id="contact-submit">
                 {formProcessing ? 'Sending' : 'Send'}
             </button>
         </form>

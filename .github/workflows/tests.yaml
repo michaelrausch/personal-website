@@ -1,0 +1,27 @@
+name: Run Tests
+on: push
+
+jobs: 
+  test:
+    runs-on: ubuntu-latest
+
+    env: 
+      NODE_ENV: test
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Modules
+        run: yarn
+
+      - name: Build
+        run: yarn build
+
+      - name: Jest
+        run: yarn test
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          build: yarn build
+          start: yarn start    

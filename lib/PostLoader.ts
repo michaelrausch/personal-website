@@ -9,6 +9,7 @@ import html from "remark-html";
  */
  export const BLOG_POSTS = path.join(process.cwd(), 'content/blogs')
  export const RESOURCES = path.join(process.cwd(), 'content/resources')
+ export const TEST = path.join(process.cwd(), 'content/test')
 
 /**
  * Constants
@@ -36,7 +37,6 @@ export const getAllPosts = (contentDirectory: string) => {
         }
     })
 
-    // TODO: Sort
     return allPostsData
 }
 
@@ -91,6 +91,7 @@ export const getPostData = async (contentDirectory: string, id: string) => {
  */
 export const getNumberOfPages = (contentDirectory: string, postsPerPage: number) => {
     const postIds = getAllPostIds(contentDirectory);
+
     return Math.ceil(postIds.length / postsPerPage);
 }
 
@@ -105,13 +106,7 @@ export const getNumberOfPages = (contentDirectory: string, postsPerPage: number)
 export const getPostsForPage = (contentDirectory: string, pageNumber: number, postsPerPage: number) => {
     const allPosts = getAllPosts(contentDirectory);
 
-    // Check we're not going to overflow (is this correct?)
-    if (pageNumber * postsPerPage > allPosts.length) {
-        // Should we error out here?
-        return allPosts;
-    }
-
-    const startIndex = (pageNumber * postsPerPage) - 1
+    const startIndex = ((pageNumber - 1) * postsPerPage)
     const endIndex = startIndex + postsPerPage
 
     return allPosts.slice(startIndex, endIndex)
