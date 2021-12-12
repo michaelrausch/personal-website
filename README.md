@@ -1,6 +1,8 @@
 # michaelrausch.nz
 See: https://michaelrausch.nz
 
+[![Tests](https://github.com/michaelrausch/michaelrausch-blog/actions/workflows/tests.yaml/badge.svg)](https://github.com/michaelrausch/michaelrausch-blog/actions/workflows/tests.yaml)
+
 ## 🛠 Installation & Set Up
 
 1. Install dependencies
