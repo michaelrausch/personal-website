@@ -78,7 +78,7 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
         <p className="homepage-heading mb-10">Coming Soon.</p>
 
         {process.env.NEXT_PUBLIC_ENABLE_BLOG === 'true' && posts.map((post, key) => {
-          return <BlogPostListing key={key} post={post} />
+          return <BlogPostListing key={key} post={post}/>
         })}
       </div>
 
@@ -87,7 +87,8 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
         <p className="homepage-heading mb-10 yellow-x">Projects</p>
 
         {repos.map((repo, key) => {
-          return <GithubRepoCard repo={repo} key={key} />
+          var odd = (key % 2) ? true : false;
+          return <GithubRepoCard repo={repo} key={key} odd={odd}/>
         })}
 
         <a href={GH_PROFILE_URL} target="_blank" rel="noreferrer" className="font-bold underline text-gray-100">View Github Profile</a>

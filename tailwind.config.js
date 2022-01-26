@@ -8,6 +8,12 @@ module.exports = {
         'futura-pt': ['"futura-pt"', 'sans-serif'],
         'futura-pt-bold': ['"futura-pt-bold"', 'sans-serif'],
       },
+      rotate: {
+        '0-5': '0.7deg',
+      },
+      scale: {
+        '102': '1.02',
+      },
       colors: {
         green: {
           "500": "#1EB154",
