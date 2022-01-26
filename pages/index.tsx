@@ -74,8 +74,8 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
       <NextSeo title="Web & App Developer" />
 
       <div className="pt-16 md:pt-0">
-        <h2 className="homepage-subheading text-blue-500">Coming Soon</h2>
-        <p className="homepage-heading mb-10">Blog Coming Soon.</p>
+        <h2 className="homepage-heading">Blog </h2>
+        <p className="homepage-heading mb-10">Coming Soon.</p>
 
         {process.env.NEXT_PUBLIC_ENABLE_BLOG === 'true' && posts.map((post, key) => {
           return <BlogPostListing key={key} post={post} />
@@ -83,9 +83,8 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
       </div>
 
       <div className="pt-28">
-        <h2 className="homepage-subheading text-yellow-500">Projects</h2>
         <p className="homepage-heading mb-1">Recently Updated </p>
-        <p className="homepage-heading mb-10">Projects</p>
+        <p className="homepage-heading mb-10 yellow-x">Projects</p>
 
         {repos.map((repo, key) => {
           return <GithubRepoCard repo={repo} key={key} />
@@ -95,8 +94,8 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
       </div>
 
       <div className="pt-28">
-        <h2 className="homepage-subheading text-green-500">Resources</h2>
-        <p className="homepage-heading mb-10">Useful Resources</p>
+        <p className="homepage-heading green-x">Resources</p>
+        <p className="homepage-heading mb-10">I Find Useful</p>
 
         <div className="flex flex-row flex-wrap justify-center sm:justify-start ">
           {resources.map((resource, id) => {
@@ -107,15 +106,16 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
 
       { process.env.NEXT_PUBLIC_ENABLE_SPOTIFY === 'true' &&
         <div className="pt-28">
-          <h2 className="homepage-subheading text-red-500">Tunes</h2>
-          <p className="homepage-heading mb-10">Coding Playlist</p>
+          <p className="homepage-heading red-x">Music</p>
+          <p className="homepage-heading mb-10">While Coding</p>
 
           <SpotifyWidget playlistId={SPOTIFY_PLAYLIST_ID} />
         </div>
       }
       
       <div className="pt-28">
-        <p className="homepage-heading mb-10">Contact Me</p>
+      <p className="homepage-heading mb-10">Contact Me</p>
+      <p className="homepage-heading mb-10"></p>
 
         <ContactForm></ContactForm>
       </div>

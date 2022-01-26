@@ -7,11 +7,27 @@
 
 @layer components {
     .homepage-heading {
-        @apply text-3xl text-black dark:text-white sm:text-5xl lg:text-6xl leading-none font-extrabold tracking-tight;
+        @apply text-3xl sm:text-5xl lg:text-6xl leading-none font-extrabold tracking-tight;
     }
 
     .homepage-subheading {
         @apply sm:text-lg sm:leading-snug font-futura-pt-bold tracking-wide uppercase mb-3;
+    }
+
+    .yellow-x {
+        color: #FECC1B;
+    }
+
+    .blue-x {
+        color: #3992FF;
+    }
+
+    .red-x {
+        color: #F44250;
+    }
+
+    .green-x {
+        color: #6BD968;
     }
 }
 
