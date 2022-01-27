@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { GithubRepository } from "../../pages"
+import { GithubRepository } from "./GithubRepoList"
 
 interface Props {
     repo: GithubRepository
