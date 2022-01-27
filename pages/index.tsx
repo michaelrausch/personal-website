@@ -1,22 +1,20 @@
 import { NextSeo } from 'next-seo'
 import { GetStaticProps } from 'next'
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 
 import { BLOG_POSTS, getAllPosts, RESOURCES } from '../lib/PostLoader'
 
 import SpotifyWidget from '../components/home/SpotifyWidget';
 import HomePageLayout from '../layouts/HomePageLayout';
-import GithubRepoCard from '../components/home/GithubRepoCard';
 import ResourceCard from '../components/home/ResourceCard';
 import ContactForm from '../components/home/ContactForm';
 import BlogPostListing from '../components/blog/BlogPostListing';
+import GithubRepoList from '../components/home/GithubRepoList';
 
 /**
  * Constants
  */
-const GH_API_URL = process.env.NEXT_PUBLIC_GITHUB_API_URL || ""
-const GH_PROFILE_URL = process.env.NEXT_PUBLIC_GITHUB_PROFILE_URL || ""
+const GH_USERNAME = process.env.NEXT_PUBLIC_GITHUB_USERNAME || ""
 const SPOTIFY_PLAYLIST_ID = process.env.NEXT_PUBLIC_SPOTIFY_PLAYLIST_ID || ""
 
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -35,40 +33,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 }
 
 const Home: React.FC<Props> = ({ posts, resources }) => {
-  const [repos, setRepos] = useState<GithubRepository[]>([]);
-
-  useEffect(() => {
-    var repos: GithubRepository[] = []
-
-    axios.get(GH_API_URL)
-      .then(response => {
-        response.data.forEach((repo: any) => {
-          // Don't use repos that are archived, dont havve a description or are forked
-          if (repo.archived) return
-          if (!repo.description) return
-          if (repo.fork) return
-
-          repos.push({
-            name: repo.name,
-            full_name: repo.full_name,
-            url: repo.html_url,
-            git: repo.git_url,
-            desc: repo.description,
-            updated_at: repo.updated_at,
-            stars: repo.stargazers_count
-          })
-
-          // Sort newest first
-          repos.sort(function (a, b) {
-            return +new Date(b.updated_at) - +new Date(a.updated_at);
-          });
-
-          repos = repos.slice(0, 3)
-          setRepos(repos);
-        });
-      })
-  }, [])
-
   return (
     <HomePageLayout>
       <NextSeo title="Web & App Developer" />
@@ -86,12 +50,9 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
         <p className="homepage-heading mb-1">Recently Updated </p>
         <p className="homepage-heading mb-10 yellow-x">Projects</p>
 
-        {repos.map((repo, key) => {
-          var odd = (key % 2) ? true : false;
-          return <GithubRepoCard repo={repo} key={key} odd={odd}/>
-        })}
+        <GithubRepoList username={GH_USERNAME}/>
 
-        <a href={GH_PROFILE_URL} target="_blank" rel="noreferrer" className="font-bold underline text-gray-100">View Github Profile</a>
+        <a href={"https://github.com/" + GH_USERNAME} target="_blank" rel="noreferrer" className="font-bold underline text-gray-100">View Github Profile</a>
       </div>
 
       <div className="pt-28">
@@ -134,16 +95,6 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
 interface Props {
   posts: [any]
   resources: [any]
-}
-
-export interface GithubRepository {
-  name: string,
-  full_name: string,
-  url: string,
-  git: string,
-  desc: string,
-  updated_at: Date,
-  stars: number
 }
 
 export default Home;
