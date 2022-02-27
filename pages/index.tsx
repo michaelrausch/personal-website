@@ -10,6 +10,8 @@ import ResourceCard from '../components/home/ResourceCard';
 import ContactForm from '../components/home/ContactForm';
 import BlogPostListing from '../components/blog/BlogPostListing';
 import GithubRepoList from '../components/home/GithubRepoList';
+import { motion } from 'framer-motion';
+import { ProjectFeatureCard } from '../components/ProjectFeatureCard';
 
 /**
  * Constants
@@ -33,6 +35,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 }
 
 const Home: React.FC<Props> = ({ posts, resources }) => {
+  const style='light';
+  const color = "#111827"
+
   return (
     <HomePageLayout>
       <NextSeo title="Web & App Developer" />
@@ -44,6 +49,16 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
         {process.env.NEXT_PUBLIC_ENABLE_BLOG === 'true' && posts.map((post, key) => {
           return <BlogPostListing key={key} post={post}/>
         })}
+      </div>
+
+      <div className="pt-28">
+        <p className="homepage-heading mb-1">Featured </p>
+        <p className="homepage-heading mb-10 green-x">Projects</p>
+
+        <div className="grid md:grid-cols-2 gap-5">
+          <ProjectFeatureCard title={'Barber & Co'} imageUrl={'/images/barberco.png'} color={'#171A20'} technologies={'Swift, Realm, React Native, NodeJS, Mongo DB, Firebase, Shopify'} outUrl={'https://linktr.ee/barberandco'} style={'light'} ></ProjectFeatureCard>
+          <ProjectFeatureCard title={'Amu Digital Website'} imageUrl={'/images/amd.png'} color={'#171A20'} technologies={'Next JS, Tailwind CSS, React, Prismic, Netlify'} outUrl={'https://amudigital.co.nz'} style={'light'} ></ProjectFeatureCard>
+        </div>
       </div>
 
       <div className="pt-28">
