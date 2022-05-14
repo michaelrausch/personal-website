@@ -81,6 +81,21 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
         </div>
       </div>
 
+      <div className="pt-28">
+        <p className="homepage-heading mb-1">Web Development </p>
+        <p className="homepage-heading mb-10 blue-x">Stack</p>
+
+        <div className="flex gap-10 flex-wrap">
+          <img src="/brandLogos/react.png" className='h-14 object-contain' alt="" />
+          <img src="/brandLogos/go.png" className='h-14 object-contain' alt="" />
+          <img src="/brandLogos/ts.png" className='h-14 object-contain' alt="" />
+          <img src="/brandLogos/firebase.png" alt="" className='h-14 object-contain'/>
+          <img src="/brandLogos/next.svg" className='h-14 object-contain' alt="" />
+          <img src="/brandLogos/vercel.svg" className='h-14 py-2 object-contain' alt="" />
+          <img src="https://www.docker.com/wp-content/uploads/2022/03/Docker-Logo-White-RGB_Horizontal.png" className='h-14 py-2 object-contain' alt="" />
+        </div>
+      </div>
+
       { process.env.NEXT_PUBLIC_ENABLE_SPOTIFY === 'true' &&
         <div className="pt-28">
           <p className="homepage-heading red-x">Music</p>
