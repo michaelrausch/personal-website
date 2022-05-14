@@ -54,7 +54,7 @@ const Blog: React.FC<Props> = ({ posts, children }) => {
           <div className="grid grid-cols-2 gap-8">
             {posts.map((post, key) => {
               return (
-                <Link href={"/post/" + post.id} key={key} >
+                <Link href={"/post/" + post.id} key={key} passHref>
                   <motion.a whileHover={{scale: 1.05}} className="w-full  rounded-md mb-10 cursor-pointer">
                     <div className="pt-5 rounded-md h-96 w-full bg-red-200 bg-cover" style={{backgroundImage: "url(" + post.hero + ")"}}></div>
                     <p className="my-2 text-gray-300 font-medium">{post.date}</p>

@@ -36,13 +36,14 @@ export const BlogPost: React.FC<Props> = ({ post }) => {
     return (
         <Layout>
             <NextSeo title={post.title}/>
-            <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 md:mb-6 text-primary pt-10">{post.title}</h1>
-            <p className="text-white font-medium"> <span className="text-green-400">Michael Rausch</span> / {post.date}</p>
 
-            <div className="w-full mt-10 h-72 bg-center bg-cover	" style={{backgroundImage: 'url("' + post.hero + '")'}}>
+            <h1 className="font-black text-4xl md:text-6xl tracking-tight mb-4 md:mb-2  pt-10 font-futura-pt-bold ">{post.title}</h1>
+            <p className="text-gray-200 font-medium">Michael Rausch / {post.date}</p>
+
+            <div className="w-full mt-10 h-72 bg-center bg-cover rounded" style={{backgroundImage: 'url("' + post.hero + '")'}}>
             </div>
 
-            <article className="prose prose-sm lg:prose-lg xl:prose-xl dark:prose-dark max-w-full mt-10" dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+            <article className="prose prose-sm lg:prose-lg xl:prose-xl dark:prose-dark max-w-full mt-10 " dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
 
         </Layout>
     )

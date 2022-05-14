@@ -11,9 +11,14 @@
     "cypress": "cypress open",
     "cypress:headless": "cypress run",
     "e2e": "start-server-and-test start http://localhost:3000 cypress",
-    "e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless"
+    "e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless",
+    "slicemachine": "start-slicemachine"
   },
   "dependencies": {
+    "@prismicio/client": "^6.4.3",
+    "@prismicio/helpers": "^2.3.0",
+    "@prismicio/react": "^2.3.0",
+    "@prismicio/slice-simulator-react": "^0.2.2",
     "@tailwindcss/typography": "^0.4.1",
     "axios": "^0.21.4",
     "dotenv": "^10.0.0",
@@ -46,6 +51,7 @@
     "jest": "^27.4.4",
     "postcss": "^8.3.6",
     "react-test-renderer": "^17.0.2",
+    "slice-machine-ui": "^0.3.7",
     "start": "^5.1.0",
     "start-server-and-test": "^1.14.0",
     "tailwindcss": "^2.2.7",
