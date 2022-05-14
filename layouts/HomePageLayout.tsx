@@ -1,11 +1,14 @@
 import { motion } from "framer-motion";
-import React from "react";
+import React, { ReactNode } from "react";
 import HomepageHeader from "../components/HomepageHeader";
 import Navbar from "../components/Navbar";
-import SocialIcons from "../components/home/SocialIcons";
 import Footer from "../components/Footer";
 
-const Layout: React.FC = ({ children }) => {
+interface Props {
+    children?: ReactNode
+}
+
+const Layout: React.FC<Props> = ({ children }) => {
     const variants = {
         hidden: { opacity: 0, x: -200, y: 0 },
         enter: { opacity: 1, x: 0, y: 0 },
@@ -22,7 +25,6 @@ const Layout: React.FC = ({ children }) => {
                         <HomepageHeader
                             name="Michael"
                             bio="I'm a freelance software engineer with a passion for everything web and mobile app development. " />
-                        <SocialIcons/>
                     </div>
                 </div>
             </div>

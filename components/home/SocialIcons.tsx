@@ -6,7 +6,7 @@ const LINKEDIN_URL = process.env.NEXT_PUBLIC_LINKEDIN_URL || ""
 
 const SocialIcons: React.FC = () => {
     return (
-        <div className="flex flex-row  gap-14 w-full justify-center mt-16 pb-14 md:pb-0">
+        <div className="flex flex-row  gap-14 w-full  mt-16 pb-14 md:pb-0">
             <a href={GITHUB_URL} className="text-4xl md:text-6xl text-white hover:text-green-400" target="_blank" rel="noreferrer">
                 <FaGithub />
             </a>

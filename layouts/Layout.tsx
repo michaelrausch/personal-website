@@ -1,11 +1,15 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
-import React from "react";
+import React, { ReactNode } from "react";
 import { useScrollPercentage } from "react-scroll-percentage";
 import Navbar from "../components/Navbar";
 import Footer from '../components/Footer';
 
-const Layout: React.FC = ({ children }) => {    
+interface Props {
+    children?: ReactNode
+}
+
+const Layout: React.FC<Props> = ({ children }) => {    
     const variants = {
         hidden: { opacity: 0, x: -200, y: 0 },
         enter: { opacity: 1, x: 0, y: 0 },

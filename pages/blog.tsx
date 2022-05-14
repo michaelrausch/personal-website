@@ -1,14 +1,9 @@
 import { NextSeo } from 'next-seo'
 import { GetStaticProps } from 'next'
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-import { BLOG_POSTS, getAllPosts, RESOURCES } from '../lib/PostLoader'
+import { BLOG_POSTS, getAllPosts } from '../lib/PostLoader'
 
-import SpotifyWidget from '../components/home/SpotifyWidget';
-import HomePageLayout from '../layouts/HomePageLayout';
-import ResourceCard from '../components/home/ResourceCard';
-import ContactForm from '../components/home/ContactForm';
-import BlogPostListing from '../components/blog/BlogPostListing';
 import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -76,6 +71,7 @@ const Blog: React.FC<Props> = ({ posts, children }) => {
 
 interface Props {
   posts: [any]
+  children?: ReactNode
 }
 
 export default Blog;

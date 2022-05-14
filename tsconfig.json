@@ -14,6 +14,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "cypress/integration/homepagelinks.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "cypress/integration/homepagelinks.js", "components/OrbitControls.jsx", "components/Earth.jsx"],
   "exclude": ["node_modules", "cypress/*"]
 }
