@@ -113,7 +113,7 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
       </div>
 
       <div className="pt-20">
-        <div className="bg-gray-900 w-full rounded-xl py-10">
+        <div className="w-full rounded-xl py-10">
           <p className="homepage-subheading text-green-500 mb-0">Email Me</p>
           <a className="leading-none font-extrabold tracking-tight text-2xl sm:text-4xl lg:text-5xl" href="mailto:michael@rausch.nz">michael@rausch.nz</a>
         </div>

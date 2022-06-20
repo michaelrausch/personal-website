@@ -27,6 +27,9 @@ module.exports = {
           "100": "#252528",
           "500": "#FECF69",
           "900": "#0e0157"
+        },
+        win95blue: {
+          "default": "060084"
         }
       },
       screens: {

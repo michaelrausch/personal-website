@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { FormEvent } from "react"
 import { useState } from "react";
+import { useReward } from 'react-rewards';
+
 
 const ContactForm: React.FC = () => {
     let API_URL = process.env.NEXT_PUBLIC_CONTACT_API_URL || '';
@@ -13,6 +15,16 @@ const ContactForm: React.FC = () => {
     let [error, setError] = useState('');
     let [successMessage, setSuccessMessage] = useState('');
     let [formProcessing, setFormProcessing] = useState(false);
+
+    const { reward, isAnimating } = useReward('confetti', 'confetti', {
+        zIndex: 1000,
+        position: 'absolute',
+        elementCount: 200,
+        lifetime: 400,
+        spread: 60,
+        startVelocity: 50,
+        angle: 70
+    });
 
     let onSubmit = (evt: FormEvent) => {
         evt.preventDefault()
@@ -30,6 +42,7 @@ const ContactForm: React.FC = () => {
             setFormProcessing(false);
             setSuccessMessage('Thanks, ' + name.split(' ')[0] + ', I\'ll get back to you as soon as possible.');
             setError('')
+            reward()
         }
 
         if (name === '') { return hadError('You must enter your name') };
@@ -101,9 +114,10 @@ const ContactForm: React.FC = () => {
 
             <button
                 className="py-3 px-8 bg-blue-500 font-futura-pt-bold text-xl rounded-md text-white w-full md:w-auto disabled:opacity-50 shadow-offset-black"
-                disabled={formProcessing}
-                id="contact-submit">
+                disabled={formProcessing || isAnimating}
+                id="contactSubmit">
                 {formProcessing ? 'Sending' : 'Send'}
+                <span id="confetti" ></span>
             </button>
         </form>
     )
