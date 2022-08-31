@@ -13,6 +13,7 @@ export default class MyDocument extends Document {
                     />
                     <link rel="icon" href="/favicon.ico" />
                     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "88296b911cff4b509db09634a3661a87"}'></script>
+                    <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/40374c30a6666a225bafccab/script.js"></script>
                 </Head>
 
                 <body>
