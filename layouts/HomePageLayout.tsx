@@ -43,17 +43,17 @@ const Layout: React.FC<Props> = ({ children }) => {
 
             <Navbar />
 
-            <div className="bg-gray-700">
+            <div className="gradient">
                 <div className="pb-10">
                     <div className="pt-20 md:pt-32 pb-0 container mx-auto px-10 md:px-42 xl:px-80">
                         <HomepageHeader
                             name="Michael"
-                            bio="I'm a freelance software engineer with a passion for everything web and mobile app development. " />
+                            bio="Software Engineer @ Actuality" />
                     </div>
                 </div>
             </div>
 
-            <svg xmlns="http://www.w3.org/2000/svg" className="-mt-2" viewBox="0 0 1440 220"><path fill="rgb(18,21,27)" fillOpacity="1" d="M0,160L80,144C160,128,320,96,480,96C640,96,800,128,960,128C1120,128,1280,96,1360,80L1440,64L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" className="-mt-2" viewBox="0 0 1440 220"><path fill="#00c6ff" fillOpacity="1" d="M0,160L80,144C160,128,320,96,480,96C640,96,800,128,960,128C1120,128,1280,96,1360,80L1440,64L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
 
             <motion.main
                 variants={variants} // Pass the variant object into Framer Motion 

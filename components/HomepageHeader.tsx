@@ -14,7 +14,7 @@ const HomepageHeader: React.FC<Props> = ({name, bio}) => {
     return (
         <div className="flex justify-between">
             <div className="">
-                <span className="font-extrabold text-3xl mb-3 green-x ">Hey There,</span>
+                <span className="font-extrabold text-3xl mb-3 text-white ">Hey There,</span>
                 <h1 className="text-primary text-3xl sm:text-6xl lg:text-7xl  font-extrabold mb-4 text-black dark:text-white ">I&apos;m {name}.</h1>
                 <p className="text-2xl text-white sm:text-3xl md:text-3xl max-w-xl font-thin pt-5 font-futura-pt ">{bio}</p>
                 <SocialIcons/>
@@ -23,7 +23,7 @@ const HomepageHeader: React.FC<Props> = ({name, bio}) => {
                 <Canvas
                     shadows={true}
                     className="w-full"
-                    style={{backgroundColor: "#12151B"}}
+                    // style={{backgroundColor: "#12151B"}}
                     camera={{
                         position: [0, 0, 9]
                     }}>

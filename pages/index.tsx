@@ -12,6 +12,7 @@ import BlogPostListing from '../components/blog/BlogPostListing';
 import GithubRepoList from '../components/home/GithubRepoList';
 import { motion } from 'framer-motion';
 import { ProjectFeatureCard } from '../components/ProjectFeatureCard';
+import Link from 'next/link';
 
 /**
  * Constants
@@ -42,16 +43,16 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
     <HomePageLayout>
       <NextSeo title="Web & App Developer" />
 
-      <div className="pt-16 md:pt-0">
+      {/* <div className="pt-16 md:pt-0">
         <h2 className="homepage-heading">Blog </h2>
         <p className="homepage-heading mb-10">Coming Soon.</p>
 
         {process.env.NEXT_PUBLIC_ENABLE_BLOG === 'true' && posts.map((post, key) => {
           return <BlogPostListing key={key} post={post}/>
         })}
-      </div>
+      </div> */}
 
-      <div className="pt-28">
+      <div className="pt-18">
         <p className="homepage-heading mb-1">Featured </p>
         <p className="homepage-heading mb-10 green-x">Projects</p>
 
@@ -116,6 +117,9 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
         <div className="w-full rounded-xl py-10">
           <p className="homepage-subheading text-green-500 mb-0">Email Me</p>
           <a className="leading-none font-extrabold tracking-tight text-2xl sm:text-4xl lg:text-5xl" href="mailto:michael@rausch.nz">michael@rausch.nz</a>
+          <Link href={"/pgp"}>
+          <a className="block leading-none font-extrabold tracking-tight text-xl pt-2" href="">PGP</a>
+          </Link>
         </div>
       </div>
     </HomePageLayout>
