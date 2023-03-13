@@ -13,10 +13,10 @@ const HomepageHeader: React.FC<Props> = ({name, bio}) => {
 
     return (
         <div className="flex justify-between">
-            <div className="">
+            <div className="pt-14">
                 <span className="font-extrabold text-3xl mb-3 text-white ">Hey There,</span>
-                <h1 className="text-primary text-3xl sm:text-6xl lg:text-7xl  font-extrabold mb-4 text-black dark:text-white ">I&apos;m {name}.</h1>
-                <p className="text-2xl text-white sm:text-3xl md:text-3xl max-w-xl font-thin pt-5 font-futura-pt ">{bio}</p>
+                <h1 className="text-primary text-3xl sm:text-6xl lg:text-7xl  font-extrabold mb-1 text-black dark:text-white ">I&apos;m {name}.</h1>
+                <p className="text-2xl text-white sm:text-2xl md:text-2xl max-w-xl font-thin pt-3 font-futura-pt ">{bio}</p>
                 <SocialIcons/>
             </div>
             <div className="hidden lg:block ">
