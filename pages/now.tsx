@@ -10,7 +10,7 @@ export const ContactPage: React.FC = ({  }) => {
             <NextSeo title={"/now"}/>
             <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 md:mb-6 text-primary pt-10">/now</h1>
 
-            <p>This page is inspired by Derek Sivers's post The /now page movement and the Now Movement. The purpose of this page is to share what I'm currently focussed on, and will be updated as things change.</p>
+            <p>This page is inspired by Derek Sivers&apos;s post The /now page movement and the Now Movement. The purpose of this page is to share what I&apos;m currently focussed on, and will be updated as things change.</p>
             
             <div className="pt-14">
                 <p className="homepage-heading mb-3 green-x text-4xl">What am I up to right now?</p>
