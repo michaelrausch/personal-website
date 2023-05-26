@@ -36,9 +36,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 }
 
 const Home: React.FC<Props> = ({ posts, resources }) => {
-  const style='light';
-  const color = "#111827"
-
   return (
     <HomePageLayout>
       <NextSeo title="Web & App Developer" />
@@ -52,76 +49,58 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
         })}
       </div> */}
 
-      <div className="pt-18">
-        <p className="homepage-heading mb-1">Featured </p>
-        <p className="homepage-heading mb-10 green-x">Projects</p>
+      <div className="pt-24 sm:pt-18 custom-container relative">
+        <p className="homepage-heading mb-1 text-black tracking-tighter z-50 relative">Featured Projects </p>
+            <div className="grid md:grid-cols-2 gap-5 pt-10 z-50 relative">
+                <ProjectFeatureCard title={'QuickView'} imageUrl={'/images/quickview.png'} color={'#e2f8d4'} technologies={'Next JS, Tailwind CSS, React, Prismic, Netlify'} outUrl={'https://actuality.co.nz'} style={'light'} ></ProjectFeatureCard>
+                <ProjectFeatureCard title={'Barber & Co'} imageUrl={'/images/barberco.png'} color={'#e2f8d4'} technologies={'Swift, Realm, React Native, NodeJS, Mongo DB, Firebase, Shopify'} outUrl={'https://linktr.ee/barberandco'} style={'light'} ></ProjectFeatureCard>
+            </div>
 
-        <div className="grid md:grid-cols-2 gap-5">
-          <ProjectFeatureCard title={'Barber & Co'} imageUrl={'/images/barberco.png'} color={'#171A20'} technologies={'Swift, Realm, React Native, NodeJS, Mongo DB, Firebase, Shopify'} outUrl={'https://linktr.ee/barberandco'} style={'light'} ></ProjectFeatureCard>
-          <ProjectFeatureCard title={'Amu Digital Website'} imageUrl={'/images/amd.png'} color={'#171A20'} technologies={'Next JS, Tailwind CSS, React, Prismic, Netlify'} outUrl={'https://amudigital.co.nz'} style={'light'} ></ProjectFeatureCard>
-        </div>
+            <div className={"py-14"}></div>
+
+            <div className={"w-full h-full top-0 right-0 absolute bg-right-bottom z-0 bg-no-repeat" } style={{backgroundImage: "url(/images/11.png"}}></div>
       </div>
 
-      <div className="pt-28">
-        <p className="homepage-heading mb-1">Recently Updated </p>
-        <p className="homepage-heading mb-10 yellow-x">Projects</p>
+      <div className="pt-28" style={{backgroundColor: "#163300"}}>
+          <div className={"custom-container"}>
+              <p className="homepage-heading mb-1 text-black tracking-tighter" style={{color: "#E2F8D4"}}>Github Projects</p>
+              <a className="font-itc-avant-garde-gothic-pro" href={"https://github.com/" + GH_USERNAME} target="_blank" rel="noreferrer" style={{color: "#E2F8D4"}}>View Github Profile</a>
 
-        <GithubRepoList username={GH_USERNAME}/>
+              <div className={"pt-10"}></div>
+              <GithubRepoList username={GH_USERNAME}/>
 
-        <a href={"https://github.com/" + GH_USERNAME} target="_blank" rel="noreferrer" className="font-bold underline text-gray-100">View Github Profile</a>
+
+              <div className={"pt-14"}></div>
+
+          </div>
       </div>
 
-      <div className="pt-28">
-        <p className="homepage-heading green-x">Resources</p>
-        <p className="homepage-heading mb-10">I Find Useful</p>
+      <div className="py-44 custom-container relative">
+          <p className="homepage-heading mb-1 text-black tracking-tighter ">Bookmarks</p>
+          <p className="font-itc-avant-garde-gothic-pro text-black mb-10">Tools & Resources I Find Useful</p>
 
-        <div className="flex flex-row flex-wrap justify-center sm:justify-start ">
+        <div className="flex flex-row flex-wrap justify-center sm:justify-start z-50 relative">
           {resources.map((resource, id) => {
             return <ResourceCard resource={resource} key={id} />
           })}
         </div>
+
+          <div className={"w-full h-full top-0 right-0 absolute bg-right-bottom z-0 bg-no-repeat" } style={{backgroundImage: "url(/images/projects.png"}}></div>
+
       </div>
 
-      <div className="pt-28">
-        <p className="homepage-heading mb-1">Web Development </p>
-        <p className="homepage-heading mb-10 blue-x">Stack</p>
 
-        <div className="flex gap-10 flex-wrap">
-          <img src="/brandLogos/react.png" className='h-14 object-contain' alt="" />
-          <img src="/brandLogos/go.png" className='h-14 object-contain' alt="" />
-          <img src="/brandLogos/ts.png" className='h-14 object-contain' alt="" />
-          <img src="/brandLogos/firebase.png" alt="" className='h-14 object-contain'/>
-          <img src="/brandLogos/next.svg" className='h-14 object-contain' alt="" />
-          <img src="/brandLogos/vercel.svg" className='h-14 py-2 object-contain' alt="" />
-          <img src="https://www.docker.com/wp-content/uploads/2022/03/Docker-Logo-White-RGB_Horizontal.png" className='h-14 py-2 object-contain' alt="" />
-        </div>
+        <div className="pt-28" style={{backgroundColor: "#9FE870"}}>
+          <div className={"custom-container"}>
+              <p className="homepage-heading mb-1 text-black tracking-tighter text-green-900" >Contact Me</p>
+              <p className="font-itc-avant-garde-gothic-pro text-green-900 mb-10">or email <a className={"underline"} href={"mailto:michael@rausch.nz"}>michael@rausch.nz</a></p>
+
+
+              <ContactForm></ContactForm>
+
+          </div>
       </div>
 
-      { process.env.NEXT_PUBLIC_ENABLE_SPOTIFY === 'true' &&
-        <div className="pt-28">
-          <p className="homepage-heading red-x">Music</p>
-          <p className="homepage-heading mb-10">While Coding</p>
-
-          <SpotifyWidget playlistId={SPOTIFY_PLAYLIST_ID} />
-        </div>
-      }
-      
-      <div className="pt-28">
-      <p className="homepage-heading mb-10">Contact Me</p>
-      <p className="homepage-heading mb-10"></p>
-
-        <ContactForm></ContactForm>
-      </div>
-
-      <div className="pt-20">
-        <div className="w-full rounded-xl py-10">
-          <p className="homepage-subheading text-green-500 mb-0">Email Me</p>
-          <a className="leading-none font-extrabold tracking-tight text-2xl sm:text-4xl lg:text-5xl" href="mailto:michael@rausch.nz">michael@rausch.nz</a>
-          <Link href={"/pgp"}>
-          <a className="block leading-none font-extrabold tracking-tight text-xl pt-2" href="">PGP</a>
-          </Link>
-        </div>
-      </div>
     </HomePageLayout>
   )
 }

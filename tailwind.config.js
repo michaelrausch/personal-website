@@ -2,11 +2,12 @@ module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}', './layouts/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
+
     extend: {
       fontFamily: {
         'sourcecode': ['"Source Code Pro"', 'sans-serif'],
         'futura-pt': ['"futura-pt"', 'sans-serif'],
-        'futura-pt-bold': ['"futura-pt-bold"', 'sans-serif'],
+        'itc-avant-garde-gothic-pro': ['"itc-avant-garde-gothic-pro"', 'sans-serif'],
       },
       rotate: {
         '0-5': '0.7deg',
@@ -16,7 +17,9 @@ module.exports = {
       },
       colors: {
         green: {
+          "200": "#E2F8D4",
           "500": "#1EB154",
+          "900": "#163300"
         },
         gray: {
           "700": "#12151B",
@@ -30,19 +33,19 @@ module.exports = {
         },
         win95blue: {
           "default": "060084"
-        }
+        },
       },
       screens: {
-        'sm': '740px',   
-        'md': '868px',  
-        'lg': '1124px',  
-        'xl': '1380px',  
+        'sm': '740px',
+        'md': '868px',
+        'lg': '1124px',
+        'xl': '1380px',
         '2xl': '1636px',
         '3xl': '2100px',
         '4xl': '2400px'
       },
       boxShadow: {
-        'offset-black': '5px 5px black',
+        'offset-black': '5px 5px black ',
         'offset-black-lg': '8px 8px black',
         'offset-green': '3px 3px #00DB87',
         'offset-green-lg': '5px 5px #00DB87'

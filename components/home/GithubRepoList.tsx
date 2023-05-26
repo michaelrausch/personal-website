@@ -13,7 +13,7 @@ const GithubRepoList: React.FC<Props> = ({username}) => {
         axios.get(GH_API_URL + "users/" + username + "/repos")
             .then(response => {
                 response.data.forEach((repo: any) => {
-                    // Don't use repos that are archived, dont havve a description or are forked
+                    // Don't use repos that are archived, don't have a description or are forked
                     if (repo.archived) return
                     if (!repo.description) return
                     if (repo.fork) return

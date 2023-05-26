@@ -7,11 +7,15 @@
 
 @layer components {
     .homepage-heading {
-        @apply text-3xl sm:text-5xl lg:text-6xl leading-none font-extrabold tracking-tight;
+        @apply text-4xl sm:text-5xl lg:text-7xl leading-none font-bold tracking-tight font-itc-avant-garde-gothic-pro;
     }
 
     .homepage-subheading {
-        @apply sm:text-lg sm:leading-snug font-futura-pt-bold tracking-wide uppercase mb-3;
+        @apply sm:text-lg sm:leading-snug font-itc-avant-garde-gothic-pro tracking-wide uppercase mb-3;
+    }
+
+    .custom-container {
+        @apply mx-auto px-10 md:px-44 xl:px-80;
     }
 
     .yellow-x {
@@ -27,7 +31,7 @@
     }
 
     .green-x {
-        color: #6BD968;
+        color: #9FE870;
     }
 }
 

@@ -69,42 +69,47 @@ const ContactForm: React.FC = () => {
     }
 
     return (
-        <form className="" onSubmit={onSubmit}>
+        <form className="pb-20 overflow-hidden" onSubmit={onSubmit}>
             {error !== '' &&
-                <div className="bg-red-500 mb-10 rounded-sm text-white py-4 px-6 font-futura-pt-bold shadow-offset-black">{error}</div>
+                <div className="bg-red-500 mb-10 rounded-sm text-white py-4 px-6 font-itc-avant-garde-gothic-pro shadow-offset-black">{error}</div>
             }
 
             {successMessage !== '' &&
-                <div className="bg-green-500 mb-10 rounded-md text-white py-4 px-6 font-futura-pt-bold shadow-offset-black">{successMessage}</div>
+                <div className="bg-green-500 mb-10 rounded-md text-white py-4 px-6 font-futura-pt-bold ">{successMessage}</div>
             }
 
-            <div className="pb-5">
-                <label className="text-white text-xl font-futura-pt-bold">Name</label>
-                <input
-                    type="text"
-                    className="bg-gray-800 rounded-md block  text-white w-full border-none text-xl py-3 mt-2 shadow-xl px-5"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Joe Bloggs"
-                    id="contact-name"
-                ></input>
+            <span id="confetti" ></span>
+
+
+            <div className="pb-10 pt-5 flex w-full gap-5 md:gap-14">
+                <div className={"flex-1"}>
+                    <label className="text-green-900 text-lg font-itc-avant-garde-gothic-pro">Name</label>
+                    <input
+                        type="text"
+                        className="bg-green-200 rounded-md block text-green-900 w-full border-none text-xl py-3 mt-2  px-5"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Joe Bloggs"
+                        id="contact-name"
+                    ></input>
+                </div>
+
+                <div className={"flex-1"}>
+                    <label className="text-green-900 text-lg font-itc-avant-garde-gothic-pro">Email</label>
+                    <input type="email"
+                           className="bg-green-200 rounded-md block text-green-900 w-full border-none text-xl py-3 mt-2 px-5"
+                           value={email}
+                           onChange={e => setEmail(e.target.value)}
+                           placeholder="hello@example.com"
+                           id="contact-email"
+                    ></input>
+                </div>
             </div>
 
             <div className="pb-5">
-                <label className="text-white text-xl font-futura-pt-bold">Email</label>
-                <input type="email"
-                    className="bg-gray-800 rounded-md block text-white w-full border-none text-xl py-3 mt-2 px-5"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                    placeholder="hello@example.com"
-                    id="contact-email"
-                ></input>
-            </div>
-
-            <div className="pb-5">
-                <label className="text-white text-xl font-futura-pt-bold">Message</label>
+                <label className="text-green-900 text-lg font-itc-avant-garde-gothic-pro">Message</label>
                 <textarea
-                    className="bg-gray-800 rounded-md block text-white w-full border-none mt-2 h-32 text-xl px-5 py-2"
+                    className="bg-green-200 rounded-md block text-green-900 w-full border-none mt-2 h-32 text-xl px-5 py-2"
                     value={message}
                     onChange={e => setMessage(e.target.value)}
                     placeholder="Hi!"
@@ -113,11 +118,10 @@ const ContactForm: React.FC = () => {
             </div>
 
             <button
-                className="py-3 px-8 bg-blue-500 font-futura-pt-bold text-xl rounded-md text-white w-full md:w-auto disabled:opacity-50 shadow-offset-black"
+                className="py-3 px-8 bg-black text-xl rounded font-itc-avant-garde-gothic-pro text-white w-full md:w-auto disabled:opacity-50"
                 disabled={formProcessing || isAnimating}
                 id="contactSubmit">
                 {formProcessing ? 'Sending' : 'Send'}
-                <span id="confetti" ></span>
             </button>
         </form>
     )

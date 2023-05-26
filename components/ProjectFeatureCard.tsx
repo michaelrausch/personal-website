@@ -24,21 +24,20 @@ export const ProjectFeatureCard: React.FC<Props> = ({ title, imageUrl, color, te
 
     return (
         <a className="w-full" target="_blank" onClick={() => {go()}}>
-            <motion.div className="overflow-hidden cursor-pointer m-auto w-full p-10 rounded-lg h-full shadow-offset-black-lg" 
-            style={{ backgroundColor: color }} 
+            <motion.div className="overflow-hidden cursor-pointer m-auto w-full p-10 rounded h-full"
+            style={{ backgroundColor: color }}
             whileHover={{ scale: 1.015 }}
             transition={{ duration: 0.2 }}
-
-                whileTap={{ scale: 0.958 }} >
-                <img alt="blog photo" src={imageUrl} className="max-h-96 object-cover self-center mx-auto" />
-                <div className="w-full pt-14" style={{color: style === 'dark' ? '#000' : '#fff'}}>
-                    <p className="text-md font-medium ">
+            whileTap={{ scale: 0.958 }} >
+                <img alt="blog photo" src={imageUrl} className="max-h-96 object-cover self-center mx-auto" style={{color: "#163300"}}/>
+                <div className="w-full pt-14" style={{color: style === 'dark' ? '#163300' : '#163300'}}>
+                    <p className="text-md font-medium font-itc-avant-garde-gothic-pro">
                         Featured Project
                     </p>
-                    <p className=" text-4xl font-bold mb-2 font-futura-pt-bold">
+                    <p className=" text-4xl font-extrabold mb-2 pt-1 font-itc-avant-garde-gothic-pro">
                         {title}
                     </p>
-                    <p className=" text-sm font-sourcecode mt-5">
+                    <p className=" text-sm font-itc-avant-garde-gothic-pro font-thin mt-5">
                         {technologies}
                     </p>
                 </div>
