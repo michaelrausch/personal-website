@@ -19,7 +19,7 @@ const HomepageHeader: React.FC<Props> = ({name, bio}) => {
                 <p className="text-lg md:text-2xl text-white sm:text-xl md:text-lg max-w-2xl font-itc-avant-garde-gothic-pro pt-3" style={{color: "#163300"}}>{bio}</p>
 
                 <div className="py-5"></div>
-                <a className="py-3 px-5 pt-4 rounded-xl font-itc-avant-garde-gothic-pro" style={{backgroundColor: "#163300", color: "#9FE870"}} href={"https://cv.michaelraus.ch"} target="_blank">Download CV</a>
+                <a className="py-3 px-5 pt-4 rounded-xl font-itc-avant-garde-gothic-pro" style={{backgroundColor: "#163300", color: "#9FE870"}} href={"https://cv.michaelraus.ch"} target="_blank" rel="noreferrer">Download CV</a>
 
 
                 <SocialIcons/>
