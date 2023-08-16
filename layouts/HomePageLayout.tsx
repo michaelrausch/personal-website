@@ -48,7 +48,7 @@ const Layout: React.FC<Props> = ({ children }) => {
                     <div className="pt-20 md:pt-12 pb-0  mx-auto custom-container">
                         <HomepageHeader
                             name="Michael"
-                            bio="Software Engineer actively seeking a new role, proficient in a range of areas, including full-stack or backend web development, as well as iOS mobile development." />
+                            bio="A Software Engineer working on UC Online @ University of Canterbury" />
                     </div>
                 </div>
             </div>
