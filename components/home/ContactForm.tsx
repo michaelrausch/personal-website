@@ -83,10 +83,10 @@ const ContactForm: React.FC = () => {
 
             <div className="pb-10 pt-5 flex w-full gap-5 md:gap-14">
                 <div className={"flex-1"}>
-                    <label className="text-green-900 text-lg font-itc-avant-garde-gothic-pro">Name</label>
+                    <label className="text-text-white text-lg font-itc-avant-garde-gothic-pro">Name</label>
                     <input
                         type="text"
-                        className="bg-green-200 rounded-md block text-green-900 w-full border-none text-xl py-3 mt-2  px-5"
+                        className="bg-white rounded-md block text-black w-full border-none text-xl py-3 mt-2  px-5"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Joe Bloggs"
@@ -95,9 +95,9 @@ const ContactForm: React.FC = () => {
                 </div>
 
                 <div className={"flex-1"}>
-                    <label className="text-green-900 text-lg font-itc-avant-garde-gothic-pro">Email</label>
+                    <label className="text-text-white text-lg font-itc-avant-garde-gothic-pro">Email</label>
                     <input type="email"
-                           className="bg-green-200 rounded-md block text-green-900 w-full border-none text-xl py-3 mt-2 px-5"
+                           className="bg-white text-black rounded-md block text-text-white w-full border-none text-xl py-3 mt-2 px-5"
                            value={email}
                            onChange={e => setEmail(e.target.value)}
                            placeholder="hello@example.com"
@@ -107,9 +107,9 @@ const ContactForm: React.FC = () => {
             </div>
 
             <div className="pb-5">
-                <label className="text-green-900 text-lg font-itc-avant-garde-gothic-pro">Message</label>
+                <label className="text-white text-lg font-itc-avant-garde-gothic-pro">Message</label>
                 <textarea
-                    className="bg-green-200 rounded-md block text-green-900 w-full border-none mt-2 h-32 text-xl px-5 py-2"
+                    className="bg-white rounded-md block text-black w-full border-none mt-2 h-32 text-xl px-5 py-2"
                     value={message}
                     onChange={e => setMessage(e.target.value)}
                     placeholder="Hi!"
@@ -118,8 +118,9 @@ const ContactForm: React.FC = () => {
             </div>
 
             <button
-                className="py-3 px-8 bg-black text-xl rounded font-itc-avant-garde-gothic-pro text-white w-full md:w-auto disabled:opacity-50"
+                className="py-3 px-8 text-xl rounded font-itc-avant-garde-gothic-pro text-white w-full md:w-auto disabled:opacity-50"
                 disabled={formProcessing || isAnimating}
+                style={{backgroundColor: "#CC2936"}}
                 id="contactSubmit">
                 {formProcessing ? 'Sending' : 'Send'}
             </button>

@@ -29,8 +29,8 @@ export const ProjectFeatureCard: React.FC<Props> = ({ title, imageUrl, color, te
             whileHover={{ scale: 1.015 }}
             transition={{ duration: 0.2 }}
             whileTap={{ scale: 0.958 }} >
-                <img alt="blog photo" src={imageUrl} className="max-h-96 object-cover self-center mx-auto" style={{color: "#163300"}}/>
-                <div className="w-full pt-14" style={{color: style === 'dark' ? '#163300' : '#163300'}}>
+                <img alt="blog photo" src={imageUrl} className="max-h-96 object-cover self-center mx-auto" style={{color: "#fff"}}/>
+                <div className="w-full pt-14" style={{color: style === 'dark' ? '#fff' : '#fff'}}>
                     <p className="text-md font-medium font-itc-avant-garde-gothic-pro">
                         Featured Project
                     </p>

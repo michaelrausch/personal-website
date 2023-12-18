@@ -11,9 +11,9 @@ const Footer: React.FC = () => {
     }, [])
 
     return (
-        <div className="w-full" style={{backgroundColor: "#9FE870"}}>
+        <div className="w-full" style={{backgroundColor: "#030301"}}>
             <div className="custom-container">
-                <p className="font-itc-avant-garde-gothic-pro text-white pt-32 pb-5 text-green-900">&copy; Michael Rausch {year}</p>
+                <p className="font-itc-avant-garde-gothic-pro text-white pt-32 pb-5">&copy; Michael Rausch {year}</p>
             </div>
         </div>
     )

@@ -19,6 +19,7 @@
     "@react95/clippy": "^1.0.9",
     "@react95/core": "^6.0.4",
     "@tailwindcss/typography": "^0.4.1",
+    "@tsparticles/react": "^3.0.0",
     "@types/three": "^0.140.0",
     "@xstyled/styled-components": "^3.6.0",
     "axios": "^0.21.4",
@@ -46,7 +47,8 @@
     "remark-external-links": "^8.0.0",
     "remark-html": "^13.0.1",
     "styled-components": "^5.3.5",
-    "three": "^0.140.2"
+    "three": "^0.140.2",
+    "tsparticles": "^3.0.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.1",

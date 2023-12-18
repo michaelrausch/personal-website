@@ -49,22 +49,22 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
         })}
       </div> */}
 
-      <div className="pt-24 sm:pt-18 custom-container relative">
+      <div className="pt-24 sm:pt-18 custom-container relative" style={{backgroundColor: "#CC2936"}}>
         <p className="homepage-heading mb-1 text-black tracking-tighter z-50 relative">Featured Projects </p>
-            <div className="grid md:grid-cols-2 gap-5 pt-10 z-50 relative">
-                <ProjectFeatureCard title={'QuickView'} imageUrl={'/images/quickview.png'} color={'#e2f8d4'} technologies={'Next JS, Tailwind CSS, React, Prismic, Netlify'} outUrl={'https://actuality.co.nz'} style={'light'} ></ProjectFeatureCard>
-                <ProjectFeatureCard title={'Barber & Co'} imageUrl={'/images/barberco.png'} color={'#e2f8d4'} technologies={'Swift, Realm, React Native, NodeJS, Mongo DB, Firebase, Shopify'} outUrl={'https://linktr.ee/barberandco'} style={'light'} ></ProjectFeatureCard>
+            <div className="grid md:grid-cols-3 gap-5 pt-10 z-50 relative">
+                <ProjectFeatureCard title={'UC Online'} imageUrl={'/images/uc.png'} color={'#000'} technologies={'Angular, Python, Django, AWS, Azure B2C, Stripe'} outUrl={'https://uconline.ac.nz'} style={'light'} ></ProjectFeatureCard>
+                <ProjectFeatureCard title={'QuickView'} imageUrl={'/images/quickview.png'} color={'#000'} technologies={'Next JS, Tailwind CSS, React, Prismic, Netlify'} outUrl={'https://actuality.co.nz'} style={'light'} ></ProjectFeatureCard>
+                <ProjectFeatureCard title={'Barber & Co'} imageUrl={'/images/barberco.png'} color={'#000'} technologies={'Swift, Realm, React Native, NodeJS, Mongo DB, Firebase, Shopify'} outUrl={'https://linktr.ee/barberandco'} style={'light'} ></ProjectFeatureCard>
             </div>
 
             <div className={"py-14"}></div>
 
-            <div className={"w-full h-full top-0 right-0 absolute bg-right-bottom z-0 bg-no-repeat" } style={{backgroundImage: "url(/images/11.png"}}></div>
       </div>
 
-      <div className="pt-28" style={{backgroundColor: "#163300"}}>
+      <div className="pt-28" style={{backgroundColor: "#030301"}}>
           <div className={"custom-container"}>
-              <p className="homepage-heading mb-1 text-black tracking-tighter" style={{color: "#E2F8D4"}}>Github Projects</p>
-              <a className="font-itc-avant-garde-gothic-pro" href={"https://github.com/" + GH_USERNAME} target="_blank" rel="noreferrer" style={{color: "#E2F8D4"}}>View Github Profile</a>
+              <p className="homepage-heading mb-1 text-black tracking-tighter" style={{color: "#fff"}}>Github Projects</p>
+              <a className="font-itc-avant-garde-gothic-pro" href={"https://github.com/" + GH_USERNAME} target="_blank" rel="noreferrer" style={{color: "#fff"}}>View Github Profile</a>
 
               <div className={"pt-10"}></div>
               <GithubRepoList username={GH_USERNAME}/>
@@ -75,9 +75,9 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
           </div>
       </div>
 
-      <div className="py-44 custom-container relative">
-          <p className="homepage-heading mb-1 text-black tracking-tighter ">Bookmarks</p>
-          <p className="font-itc-avant-garde-gothic-pro text-black mb-10">Tools & Resources I Find Useful</p>
+      <div className="py-44 custom-container relative" style={{backgroundColor: "#030301"}} >
+          <p className="homepage-heading mb-1 text-white tracking-tighter ">Bookmarks</p>
+          <p className="font-itc-avant-garde-gothic-pro text-white mb-10">Tools & Resources I Find Useful</p>
 
         <div className="flex flex-row flex-wrap justify-center sm:justify-start z-50 relative">
           {resources.map((resource, id) => {
@@ -85,15 +85,15 @@ const Home: React.FC<Props> = ({ posts, resources }) => {
           })}
         </div>
 
-          <div className={"w-full h-full top-0 right-0 absolute bg-right-bottom z-0 bg-no-repeat" } style={{backgroundImage: "url(/images/projects.png"}}></div>
+          <div className={"w-full h-full top-0 right-0 absolute bg-right-bottom z-0 bg-no-repeat opacity-5" } style={{backgroundImage: "url(/images/projects.png"}}></div>
 
       </div>
 
 
-        <div className="pt-28" style={{backgroundColor: "#9FE870"}}>
+        <div className="pt-28" style={{backgroundColor: "#030301"}}>
           <div className={"custom-container"}>
-              <p className="homepage-heading mb-1 text-black tracking-tighter text-green-900" >Contact Me</p>
-              <p className="font-itc-avant-garde-gothic-pro text-green-900 mb-10">or email <a className={"underline"} href={"mailto:michael@rausch.nz"}>michael@rausch.nz</a></p>
+              <p className="homepage-heading mb-1 text-white tracking-tighter " >Contact Me</p>
+              <p className="font-itc-avant-garde-gothic-pro text-white mb-10">or email <a className={"underline"} href={"mailto:michael@rausch.nz"}>michael@rausch.nz</a></p>
 
 
               <ContactForm></ContactForm>
